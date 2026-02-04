@@ -2,7 +2,8 @@
 
 
 
-// TODO 
+// TODO finish readme
+// TODO ef ég hef tíma template-a types í data structure frá int í hva sem er
 
 1. What abstract data structures you implemented and a general summary of how they are implemented. For example, specify the growth factor of your dynamically sized array, specify what kind of self-balancing binary search tree you used, mention any data structures you used to implement other data structures. Imagine that you are documenting your library enough that other programmers can use it.
 

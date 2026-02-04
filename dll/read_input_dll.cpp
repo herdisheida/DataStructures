@@ -1,6 +1,6 @@
 #include <cassert>
 #include <iostream>
-#include "list.h"
+#include "doubly_linked_list.h"
 
 using std::cout;
 using std::cin;
@@ -18,8 +18,8 @@ int main() {
     }
 
     for (int i = 0; i < q; i++) {
-        int instance;
-        cin >> instance;
+        int instance;  // id
+        cin >> instance; 
         instance--;
         cin >> ws;
         char op;

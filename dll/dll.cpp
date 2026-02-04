@@ -3,7 +3,21 @@
 
 using std::cout;
 using std::cin;
-using std::ws;
+
+
+// TODO : 
+// You must implement the: 
+    // default constructor
+    // copy constructor
+    // assignment (operator=)
+    // front
+    // back
+    // insert
+    // erase
+    // size
+    // successor
+    // predecessor
+
 
 
 template <typename Node>
@@ -11,7 +25,6 @@ struct DoublyLinkedList {
     Node data;
     Node *prev;
     Node *next;
-
 
 
     void sentinel_end_node() {

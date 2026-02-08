@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cstddef>
 #include <iostream>
 
 using std::cout;
@@ -20,11 +21,21 @@ using std::cin;
 
 
 
-template <typename Node>
-struct DoublyLinkedList {
-    Node data;
-    Node *prev;
-    Node *next;
+template <typename n>
+struct Node{
+    n data;
+    n *prev;
+    n *next;
+
+    Node() {
+        data = NULL;
+        prev = nullptr;
+        next = nullptr;
+    }
+};
+
+struct DoublyLinkedList {    
+    Node
 
 
     void sentinel_end_node() {

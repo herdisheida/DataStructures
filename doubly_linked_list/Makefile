@@ -5,7 +5,7 @@ TARGET   := program
 SRCS := main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
-INPUTS := input1.txt input2.txt
+INPUTS := test_input/test1.txt test_input/test2.txt
 
 all: info $(TARGET)
 
@@ -31,4 +31,3 @@ clean:
 	rm -f $(OBJS) $(TARGET)
 
 .PHONY: all clean info
-	

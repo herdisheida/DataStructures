@@ -17,7 +17,7 @@ struct DynamicArray {
 
 
     // initialize an empty instance
-    void init_empty(size_t initial_cap) {
+    void init(size_t initial_cap) {
         sz = 0;
         cap = (initial_cap <= 0 ? 1 : initial_cap);
         data = new T[cap];
@@ -41,7 +41,7 @@ struct DynamicArray {
 
     // default constructor
     DynamicArray() : data(0), sz(0), cap(0) {
-        init_empty(4);
+        init(4);
     }
 
     // auto destructor

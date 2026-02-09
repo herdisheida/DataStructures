@@ -182,7 +182,7 @@ struct HashTable {
         for (size_t i = 0; i < old_bucket_count; ++i) {
             Node* n = old_buckets[i];
             while (n) {                
-                _raw_insert(n -> key, n -> value);  // inserts into new table
+                _raw_insert(n -> key, n -> value);
 
                 Node* nxt = n -> next;
                 delete n;  // free old node

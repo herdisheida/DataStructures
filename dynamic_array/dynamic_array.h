@@ -65,6 +65,35 @@ struct DynamicArray {
     size_t size() const {
         return sz;
     }
+
+    // insert element behind the currently last element
+    void push_back(int value) {
+    }
+
+    // remove the last element.
+    T pop_back() {
+        return data[--sz];
+    }
+
+    // insert an elem at the given index, other elems must retain relative order
+    void insert(size_t index, int value) {
+    }
+
+    // remove elem at given index, other elems must retain relative order with no gaps between elements
+    T erase(size_t index) {
+    }
+
+    // provide access to element at a given index for both read and write operations
+    // TODO
+
+    // sets the size of the array to the given value, if it grows then new values get default values
+    // There is no requirement that this affects the capacity.
+    void resize(size_t new_size) {
+    }
+
+    // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
+    void reserve(size_t new_cap) {
+    }
 };
 
 

@@ -6,7 +6,7 @@ BUILD_NAME := Dynamic Array
 SRCS := main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
-all: info $(TARGET)
+all: $(TARGET) info
 
 info:
 	@echo "======================================"

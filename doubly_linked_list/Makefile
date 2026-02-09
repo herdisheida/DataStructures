@@ -8,7 +8,7 @@ OBJS := $(SRCS:.cpp=.o)
 
 INPUTS := input_tests/input1.txt input_tests/input2.txt
 
-all: info $(TARGET)
+all: $(TARGET) info
 
 info:
 	@echo "======================================"

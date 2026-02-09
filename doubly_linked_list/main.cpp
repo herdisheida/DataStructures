@@ -62,7 +62,7 @@ struct DoublyLinkedList {
     }
     
 
-    // erase the cursor node, returning the node after the erased node.
+    // erase the cursor node, returning the node after the erased node
     Node<T>* erase(Node<T>* cursor) {
         assert(sentinel != cursor);  // not allowed
 
@@ -75,7 +75,18 @@ struct DoublyLinkedList {
         sz--;
         return after;
     }
-    
+
+
+    // return the first node of the list, not a sentinel node
+    Node<T>* front(Node<T>* cursor) const {
+        return sentinel -> next;
+    }
+    // return the last node of the list, a sentinel node
+    Node<T>* back(Node<T>* cursor) const {
+        return sentinel -> prev;
+    }
+
+
     // return the node before the cursor node
     Node<T>* predecessor(Node<T>* cursor) const {
         return cursor -> prev;

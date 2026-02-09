@@ -21,7 +21,24 @@ struct HashTable {
     size_t bucket_count;
     size_t sz;
 
-    
+    // default constructor
+
+    // copy constructor
+
+    // assignment (operator=)
+
+
+    // insert a key-value pair to the hash table. If they key is present, then nothing is inserted
+    // insert()
+
+    // remove the given key from the hash table
+    // erase()
+
+    // provide access to the value associated with a given key
+    // element access(key)
+
+    // provide the size of the hash table
+    // size()
 };
 
 

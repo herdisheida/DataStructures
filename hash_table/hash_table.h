@@ -91,7 +91,6 @@ struct HashTable {
         }
     }
 
-
     // default constructor
     HashTable() : buckets(0), bucket_count(0), sz(0) {
         init(8);
@@ -118,12 +117,12 @@ struct HashTable {
 
     // insert a key-value pair to the hash table. If they key is present, then nothing is inserted
     void insert(int key, const T& value) {
-
+        Node* n = find_node(key);
     }
 
     // remove the given key from the hash table
     void erase(int key) {
-
+        Node* n = find_node(key);
     }
 
     // provide access to the value associated with a given key
@@ -138,7 +137,28 @@ struct HashTable {
         buckets[idx] = new Node(key, T(), buckets[idx]);
         sz++;
         return buckets[idx] -> value;
-    }    
+    }
+
+
+    // def rebuild(self):
+    //     if self.item_count >= self.bucket_count * 1.2:
+    //         old_bucket_list = self.bucket_list
+
+    //         self.bucket_count *= 2
+    //         self.bucket_list = [Bucket() for _ in range(self.bucket_count)]
+    //         self.item_count = 0  # reset before redistributing
+
+    //         for bucket in old_bucket_list:
+    //             node = bucket.head
+    //             while node:
+    //                 self.insert(node.key, node.data)
+    //                 node = node.next
+
+    // when num of items in HashTable reach 120% of the num of buckets
+    // double the bucket_count and redistribute all key-value pairs
+    void rebuild() {
+
+    }
 
     // provide the size of the hash table
     size_t size() const {

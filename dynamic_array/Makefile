@@ -11,7 +11,7 @@ all: info $(TARGET)
 
 info:
 	@echo "======================================"
-	@echo "Build complete."
+	@echo "Dynamic Array build complete."
 	@echo
 	@echo "To run with own input:"
 	@echo "  ./$(TARGET)"

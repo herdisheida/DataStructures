@@ -97,7 +97,7 @@ struct DoublyLinkedList {
     }
     // back : return the last node of the list, a sentinel node
     Node<T>* sentinel_end_node() const {
-        return sentinel -> prev;
+        return sentinel;
     }
 
     // return the node before the cursor node

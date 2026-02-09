@@ -43,13 +43,14 @@ int main() {
             vecs[instance].pop_back();
         }
         else if (op == 'i') {
-            int index, value;
+            size_t index;
+            int value;
             cin >> index >> value;
             // insert
             vecs[instance].insert(index, value);
         }
         else if (op == 'e') {
-            int index;
+            size_t index;
             cin >> index;
             // erase
             vecs[instance].erase(index);
@@ -61,13 +62,14 @@ int main() {
             cout << vecs[instance][index] << endl;
         }
         else if (op == 's') {
-            int index, value;
+            size_t index;
+            int value;
             cin >> index >> value;
             // set
             vecs[instance][index] = value;
         }
         else if (op == 'r') {
-            int sz;
+            size_t sz;
             cin >> sz;
             // resize
             vecs[instance].resize(sz);

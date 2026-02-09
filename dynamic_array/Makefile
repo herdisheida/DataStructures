@@ -6,8 +6,6 @@ BUILD_NAME := Dynamic Array
 SRCS := main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
-INPUTS := input_tests/input1.txt input_tests/input2.txt
-
 all: info $(TARGET)
 
 info:
@@ -16,10 +14,6 @@ info:
 	@echo
 	@echo "To run with own input:"
 	@echo "  ./$(TARGET)"
-	@echo
-	@echo "To run tests, use one of:"
-	@echo
-	@for f in $(INPUTS); do echo "  ./$(TARGET) < $$f"; done
 	@echo "======================================"
 
 $(TARGET): $(OBJS)

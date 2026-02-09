@@ -86,6 +86,7 @@ struct DynamicArray {
 
     // insert element behind the currently last element
     void push_back(int value) {
+        insert(sz, value);
     }
 
     // remove the last element.

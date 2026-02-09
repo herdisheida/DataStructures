@@ -114,9 +114,11 @@ struct DynamicArray {
         sz--;
     }
 
-    // provide access to element at a given index for both read and write operations
-    // TODO
-
+    // provide access to element at a given index (read and write)
+    T& operator[](size_t index) {
+        return data[index];
+    }
+    
     // sets the size of the array to the given value, if it grows then new values get default values
     // There is no requirement that this affects the capacity.
     void resize(size_t new_size) {

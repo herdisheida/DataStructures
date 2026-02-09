@@ -84,6 +84,10 @@ struct DynamicArray {
 
     // remove elem at given index, other elems must retain relative order with no gaps between elements
     T erase(size_t index) {
+        for (size_t i = index + 1; i < sz; i++) {
+            data[i - 1] = data[i];
+        }
+        sz--;
     }
 
     // provide access to element at a given index for both read and write operations
@@ -97,7 +101,6 @@ struct DynamicArray {
             while (new_size < new_cap) new_cap *= 2;
             reserve(new_cap);
         }
-
         if (new_size > sz) {
             // new space has default value = 0
             for (size_t i = sz; i < new_size; i++) data[i] = 0;

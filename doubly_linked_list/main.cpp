@@ -90,8 +90,7 @@ struct DoublyLinkedList {
 
     // return the size of the instance
     Node<T>* size(Node<T>* cursor) const {
-        assert(sentinel != cursor);  // not allowed
-        return cursor -> next;
+        return sz;
     }
 
 

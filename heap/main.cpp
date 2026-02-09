@@ -49,7 +49,6 @@ int main() {
             cin >> key;
             // peek
             cout << heaps[id].peek() << endl;
-            
         }
         else if (op == 's') {
             int key, value;

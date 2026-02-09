@@ -28,6 +28,15 @@ struct HashTable {
         return hash<int>()(key) % bucket_count;
     }
 
+    Node* find_node(int key) const {
+        size_t idx = get_bucket_index(key);
+        Node* curr = buckets[idx];
+        while (curr) {
+            if (curr -> key == key) return curr;
+            curr = curr -> next;
+        }
+        return 0;
+    }
 
     // initialize an empty instance
     void init(size_t bucket_count) {

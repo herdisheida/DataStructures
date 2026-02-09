@@ -21,51 +21,59 @@ using std::cin;
 
 
 
-template <typename n>
-struct Node{
-    n data;
-    n *prev;
-    n *next;
-
-    Node() {
-        data = NULL;
-        prev = nullptr;
-        next = nullptr;
-    }
+template<typename T>
+struct Node {
+    T value;
+    Node* prev;
+    Node* next;
 };
 
-struct DoublyLinkedList {    
-    Node
+template<typename T>
+struct DoublyLinkedList {
+    Node<T>* sentinel;
+    size_t size;
 
-
-    void sentinel_end_node() {
-
+    // constructor
+    DoublyLinkedList() {
+        sentinel = new Node<T>();
+        sentinel->next = sentinel;
+        sentinel->prev = sentinel;
     }
 
-    void begin_node() {
-
-    }
     
-    void insert() {
-
-    }
-
-   void erase() {
-
-    }
-
-   void successor() {
-
-    }
-
-   void predecessor() {
-
-    }
-
-    void size() {
-
-    }
 };
+
+
+
+
+void sentinel_end_node() {
+
+}
+
+void begin_node() {
+
+}
+
+void insert() {
+
+}
+
+void erase() {
+
+}
+
+void successor() {
+
+}
+
+void predecessor() {
+
+}
+
+void size() {
+
+}
+
 
 
 

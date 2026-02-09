@@ -5,7 +5,6 @@
 #include <cstddef>
 
 using std::cout;
-using std::hash;
 using std::size_t;
     
 
@@ -23,13 +22,24 @@ struct HashTable {
     size_t bucket_count;
     size_t sz;
 
+
+    // hash function for keys
+    size_t _hash_key(int key) const {
+        unsigned int x = (unsigned int) key;
+        return (size_t) (x * 2654435761u);
+    }
+
     // get the bucket index for a given key
-    size_t get_bucket_index(int key) const {
-        return hash<int>()(key) % bucket_count;
+    size_t _get_bucket_index(int key) const {
+        // TODO DELETE debu
+        if (bucket_count == 0) {
+            std::cerr << "bucket_count is 0!\n";
+        }
+        return _hash_key(key) % bucket_count;
     }
 
     Node* find_node(int key) const {
-        size_t idx = get_bucket_index(key);
+        size_t idx = _get_bucket_index(key);
         Node* curr = buckets[idx];
         while (curr) {
             if (curr -> key == key) return curr;
@@ -40,7 +50,7 @@ struct HashTable {
 
     // initialize an empty instance
     void init(size_t new_bucket_count) {
-        this -> bucket_count = new_bucket_count;
+        this -> bucket_count = new_bucket_count > 0 ? new_bucket_count : 8;
 
         buckets = new Node*[this -> bucket_count];
         for (size_t i = 0; i < this -> bucket_count; i++) buckets[i] = 0;
@@ -123,7 +133,7 @@ struct HashTable {
     }
 
     void _raw_insert(int key, const T& value) {
-        size_t idx = get_bucket_index(key);
+        size_t idx = _get_bucket_index(key);
         buckets[idx] = new Node(key, value, buckets[idx]);
         sz++;
     }
@@ -137,7 +147,7 @@ struct HashTable {
 
     // remove the given key from the hash table
     void erase(int key) {
-        size_t idx = get_bucket_index(key);
+        size_t idx = _get_bucket_index(key);
         Node* curr = buckets[idx];
         Node* prev = 0;
 
@@ -164,7 +174,8 @@ struct HashTable {
         if (n) return n -> value;
 
         // set new value
-        size_t idx = get_bucket_index(key);
+        ensure_capacity();
+        size_t idx = _get_bucket_index(key);
         buckets[idx] = new Node(key, T(), buckets[idx]);
         sz++;
         return buckets[idx] -> value;

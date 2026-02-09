@@ -45,3 +45,44 @@ make clean
 ```
 
 ## Anything else a student wishes to say. Put it here and not in the Canvas comments!
+
+## Time Complexities & Exceptional Cases
+
+### Doubly Linked List
+
+Let `n` be the current number of nodes in the list (not counting the sentinel).
+
+The list uses a **sentinel node**. In an empty list:
+
+- `sentinel -> next == sentinel`
+- `sentinel -> prev == sentinel`
+
+| Operation              | Time Complexity | Exceptional cases / notes                                                             |
+| ---------------------- | --------------: | ------------------------------------------------------------------------------------- |
+| Default construction   |            O(1) | Creates sentinel node; empty list has cursor at sentinel                              |
+| Copy construction      |            O(n) | Deep copy; instances do not share nodes                                               |
+| Assignment operator    |            O(n) | Clears old nodes then deep-copies; self-assignment is a no-op                         |
+| Front                  |            O(1) | In an empty list, `front` returns the sentinel (since `sentinel -> next == sentinel`) |
+| Back                   |            O(1) | Returns the sentinel node                                                             |
+| Insert (before cursor) |            O(1) | Assumes cursor is a valid node in this list (including sentinel)                      |
+| Erase (cursor)         |            O(1) | Cursor must not be the sentinel                                                       |
+| Predecessor            |            O(1) | If cursor is sentinel, predecessor is last node (or sentinel if empty)                |
+| Successor              |            O(1) | If cursor is sentinel, successor is first node (or sentinel if empty)                 |
+| Size                   |            O(1) |                                                                                       |
+
+### Dynamically Sized Array
+
+Let `n` be the current number of elements in the array.
+
+| Operation                   |                 Time Complexity | Exceptional cases / notes                                |
+| --------------------------- | ------------------------------: | -------------------------------------------------------- |
+| Default construction        |                            O(1) | Initializes an empty array with a fixed initial capacity |
+| Copy construction           |                            O(n) | Deep copy; the two instances do not share memory         |
+| Assignment operator         |                            O(n) | Self-assignment check; deep copy of all elements         |
+| Push back                   | Amortized O(1), worst-case O(n) | Worst case occurs when reallocation is required          |
+| Pop back                    |                            O(1) | If the array is empty, operation has no effect           |
+| Insert                      |                            O(n) | Elements after the index are shifted right               |
+| Erase                       |                            O(n) | Elements after the index are shifted left                |
+| Element access (read/write) |                            O(1) | No bounds checking; assumes index is valid               |
+| Resize                      |                            O(n) | If growing, new elements are default-initialized         |
+| Reserve                     |                            O(n) | If requested capacity ≤ current capacity, no effect      |

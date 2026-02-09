@@ -51,6 +51,25 @@ struct Heap {
         cap = new_cap;
     }
 
+    void swap(size_t i, size_t j) {
+        T temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
+    }
+
+    void bubbleUp(size_t index) {
+        // TODO
+        // newly inserted elemnt is set at end of arr
+        // sift it up until heap property is satisfied
+    }
+
+    void sinkDown(size_t index) {
+        // TODO
+        // after removing smallest element
+        // the last element is put at the top of the heap-tree
+        // sift it down until heap property is satisfied
+    }
+
     // default constructor
     Heap() : data(0), sz(0), cap(0) {
         init(4);

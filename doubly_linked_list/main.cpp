@@ -33,7 +33,7 @@ struct Node {
 template<typename T>
 struct DoublyLinkedList {
     Node<T>* sentinel = nullptr;
-    size_t size = 0;
+    size_t sz = 0;
 
     // constructor
     DoublyLinkedList() {
@@ -57,7 +57,7 @@ struct DoublyLinkedList {
         cursor -> prev -> next = new_node;
         cursor -> prev = new_node;
 
-        size++;
+        sz++;
         return new_node;
     }
     
@@ -72,7 +72,7 @@ struct DoublyLinkedList {
         cursor -> next -> prev = cursor -> prev;  // disconnect after (rhs)
 
         delete cursor;
-        size--;
+        sz--;
         return after;
     }
     
@@ -88,6 +88,11 @@ struct DoublyLinkedList {
         return cursor -> next;
     }
 
+    // return the size of the instance
+    Node<T>* size(Node<T>* cursor) const {
+        assert(sentinel != cursor);  // not allowed
+        return cursor -> next;
+    }
 
 
 };

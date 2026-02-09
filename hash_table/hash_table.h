@@ -22,6 +22,12 @@ struct HashTable {
     size_t sz;
 
     // default constructor
+    HashTable(size_t bucket_count = 32) : bucket_count(bucket_count), sz(0) {
+        buckets = new Node*[bucket_count];
+        for (size_t i = 0; i < bucket_count; i++) {
+            buckets[i] = nullptr;
+        }
+    }
 
     // copy constructor
 

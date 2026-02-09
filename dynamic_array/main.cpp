@@ -4,6 +4,7 @@
 
 using std::cout;
 using std::cin;
+using std::endl;
 using std::ws;
 
 
@@ -57,7 +58,7 @@ int main() {
             int index;
             cin >> index;
             // get
-            vecs[instance][index];
+            cout << vecs[instance][index] << endl;
         }
         else if (op == 's') {
             int index, value;

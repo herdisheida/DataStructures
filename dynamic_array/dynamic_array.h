@@ -70,7 +70,7 @@ struct DynamicArray {
 
     // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
     void reserve(size_t new_cap) {
-        if (new_cap < cap) return;
+        if (new_cap <= cap) return;
 
         // copy old data to new data 
         T* new_data = new T[new_cap];
@@ -85,7 +85,7 @@ struct DynamicArray {
     }
 
     // insert an elem at the given index, other elems must retain relative order
-    void insert(size_t index, int value) {
+    void insert(size_t index, const T& value) {
         if (sz == cap) reserve(cap * 2);
 
         // create an empty slot to place inserted value
@@ -124,7 +124,7 @@ struct DynamicArray {
     void resize(size_t new_size) {
         if (new_size > cap) {
             size_t new_cap = cap;
-            while (new_size < new_cap) new_cap *= 2;
+            while (new_cap < new_size) new_cap *= 2;
             reserve(new_cap);
         }
         if (new_size > sz) {

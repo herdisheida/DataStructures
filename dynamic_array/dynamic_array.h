@@ -89,10 +89,14 @@ struct DynamicArray {
     // sets the size of the array to the given value, if it grows then new values get default values
     // There is no requirement that this affects the capacity.
     void resize(size_t new_size) {
+        // if new size is smaller.= capacity doesnt change
+        // is new size is larger than cap -> double capacity until it is large enough
     }
 
     // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
     void reserve(size_t new_cap) {
+        // if reserve < capacyt = do nothing - already have enough space
+        // if reserve > capacity = double capacity until it is large enough, copy old data to new data, delete old data
     }
 };
 

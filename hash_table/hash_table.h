@@ -144,7 +144,8 @@ struct HashTable {
         }
     }
 
-    // provide access to the value associated with a given key
+    // get ref to value by key
+    // if no key add new value with key
     T& operator[](int key) {
         Node* n = find_node(key);
 

@@ -77,15 +77,22 @@ struct HashTable {
         buckets = new Node*[bucket_count];
 
         for (size_t i = 0; i < bucket_count; i++) {
+            Node* curr = other.buckets[i];  // curr node in other bucket list
+            Node* tail = 0;
             buckets[i] = 0;
-            Node* current = other.buckets[i];
-            Node** ptr = &buckets[i];
 
-            while (current) {
-                *ptr = new Node(current -> key, current -> value, 0);  // key, value, next
-                ptr = &((*ptr) -> next);
-                current = current -> next;
-                sz++;
+            while (curr) {
+                Node* n = new Node(curr -> key, curr -> value, 0);
+
+                // add n to the end of this bucket list
+                if (!buckets[i]) {
+                    buckets[i] = n;
+                    tail = n;
+                } else {
+                    tail->next = n;
+                    tail = n;
+                }
+                curr = curr->next;
             }
         }
     }
@@ -118,7 +125,7 @@ struct HashTable {
     void insert(int key, const T& value) {
         if (find_node(key)) return;
 
-        rebuild(); // if needed
+        ensure_capacity(); // if needed
 
         size_t idx = get_bucket_index(key);
         buckets[idx] = new Node(key, value, buckets[idx]);
@@ -160,28 +167,31 @@ struct HashTable {
     }
 
 
-    // when num of items in HashTable reach 120% of the num of buckets
-    // double the bucket_count and redistribute all key-value pairs
-    void rebuild() {
-        if (sz >= bucket_count * 1.2) {
+    // re-hash to new bucket count
+    void rehash(size_t new_bucket_count) {
+        Node** old_buckets = buckets; // keep copy of old key-value pairs
+        
 
-            Node** old_buckets = buckets; // keep copy of old key-value pairs
+        // reset all
+        bucket_count *= 2;
+        init(new_bucket_count); // resets sz
 
-            // reset all
-            bucket_count *= 2;
-            buckets = init(bucket_count);
-            sz = 0;
-
-            // re-add items to bigger capacity bucket list
-            for (Node** bucket : old_buckets) {
-                Node* n = bucket;
-                while (n) {
-                    insert(n -> key, n -> value);
-                    n = n -> next;
-                }
-            
-            delete[] old_buckets;
+        // re-add items to bigger capacity bucket list
+        for (Node** bucket : old_buckets) {
+            Node* n = bucket;
+            while (n) {
+                insert(n -> key, n -> value);
+                n = n -> next;
             }
+        
+        delete[] old_buckets;
+        }
+    }
+
+    // when num of items in HashTable reach 120% of the num of buckets
+    void ensure_capacity() {
+        if (sz >= bucket_count * 1.2) {
+            rehash(bucket_count * 2);
         }
     }
 

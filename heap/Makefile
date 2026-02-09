@@ -1,7 +1,7 @@
 CXX      := clang++
 CXXFLAGS := -std=c++98 -Wall -Wextra -pedantic
 TARGET   := program
-BUILD_NAME := Hash Table
+BUILD_NAME := Heap
 
 SRCS := main.cpp
 OBJS := $(SRCS:.cpp=.o)

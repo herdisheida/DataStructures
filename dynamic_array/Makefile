@@ -11,9 +11,6 @@ all: $(TARGET) info
 info:
 	@echo "======================================"
 	@echo "$(BUILD_NAME) build complete."
-	@echo
-	@echo "To run with own input:"
-	@echo "  ./$(TARGET)"
 	@echo "======================================"
 
 $(TARGET): $(OBJS)

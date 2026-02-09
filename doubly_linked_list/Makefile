@@ -13,13 +13,6 @@ all: $(TARGET) info
 info:
 	@echo "======================================"
 	@echo "$(BUILD_NAME) build complete."
-	@echo
-	@echo "To run with own input:"
-	@echo "  ./$(TARGET)"
-	@echo
-	@echo "To run tests, use one of:"
-	@echo
-	@for f in $(INPUTS); do echo "  ./$(TARGET) < $$f"; done
 	@echo "======================================"
 
 $(TARGET): $(OBJS)

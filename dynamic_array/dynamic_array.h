@@ -63,10 +63,25 @@ struct DynamicArray {
         return *this;
     }
 
-
     // return the size of the instance
     size_t size() const {
         return sz;
+    }
+
+    // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
+    void reserve(size_t new_cap) {
+        if (new_cap < cap) return;
+
+        // copy old data to new data 
+        T new_data = new T[new_cap];
+        for (size_t i = 0; i < sz; i++) {
+            new_data[i] = data[i];
+        }
+
+        // delete old and set new values
+        delete[] data;
+        data = new_data;
+        cap = new_cap;
     }
 
     // insert element behind the currently last element
@@ -74,7 +89,7 @@ struct DynamicArray {
     }
 
     // remove the last element.
-    T pop_back() {
+    T* pop_back() {
         return data[--sz];
     }
 
@@ -91,7 +106,7 @@ struct DynamicArray {
     }
 
     // remove elem at given index, other elems must retain relative order with no gaps between elements
-    T erase(size_t index) {
+    T* erase(size_t index) {
         for (size_t i = index + 1; i < sz; i++) {
             data[i - 1] = data[i];
         }
@@ -116,21 +131,6 @@ struct DynamicArray {
         sz = new_size;
     }
 
-    // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
-    void reserve(size_t new_cap) {
-        if (new_cap < cap) return;
-
-        // copy old data to new data 
-        T new_data = new T[new_cap];
-        for (size_t i = 0; i < sz; i++) {
-            new_data[i] = data[i];
-        }
-
-        // delete old and set new values
-        delete[] data;
-        data = new_data;
-        cap = new_cap;
-    }
 
     // print this instance
     void print() const {

@@ -79,11 +79,6 @@ struct DynamicArray {
         return *this;
     }
 
-    // return the size of the instance
-    size_t size() const {
-        return sz;
-    }
-
     // insert an elem at the given index, other elems must retain relative order
     void insert(size_t index, const T& value) {
         if (sz == cap) reserve(cap * 2);

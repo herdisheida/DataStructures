@@ -86,6 +86,22 @@ Let `n` be the current number of elements in the array.
 | Element access (read/write) |                            O(1) | No bounds checking; assumes index is valid               |
 | Resize                      |                            O(n) | If growing, new elements are default-initialized         |
 | Reserve                     |                            O(n) | If requested capacity ≤ current capacity, no effect      |
+| Print                       |                            O(n) |                                                          |
+
+### Heap
+
+Let `n` be the current number of elements in the heap.
+
+| Operation            | Time Complexity | Exceptional cases / notes                                |
+| -------------------- | --------------: | -------------------------------------------------------- |
+| Default construction |            O(1) | Initializes an empty array with a fixed initial capacity |
+| Copy construction    |            O(n) | Deep copy; the two instances do not share memory         |
+| Assignment operator  |            O(n) | Self-assignment check; deep copy of all elements         |
+| Push                 |                 |                                                          |
+| Pop                  |                 |                                                          |
+| Insert               |                 |                                                          |
+| Peak                 |                 |                                                          |
+| Size                 |            O(1) |                                                          |
 
 ### HashTable
 
@@ -100,4 +116,4 @@ This hash table uses **separate chaining** (linked lists in buckets) and **rehas
 | Insert                            | Expected O(1), worst O(n) | If key already exists → no-op. If rehash happens → O(n + b) for that insertion (amortized O(1)) |
 | Erase                             | Expected O(1), worst O(n) | Input guarantees key exists                                                                     |
 | Element access (get/set existing) | Expected O(1), worst O(n) | Input guarantees key exists                                                                     |
-| Size                              |                      O(1) | None                                                                                            |
+| Size                              |                      O(1) |                                                                                                 |

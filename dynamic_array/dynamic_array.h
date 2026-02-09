@@ -84,16 +84,6 @@ struct DynamicArray {
         cap = new_cap;
     }
 
-    // insert element behind the currently last element
-    void push_back(int value) {
-        insert(sz, value);
-    }
-
-    // remove the last element.
-    void pop_back() {
-        sz--;
-    }
-
     // insert an elem at the given index, other elems must retain relative order
     void insert(size_t index, int value) {
         if (sz == cap) reserve(cap * 2);
@@ -104,6 +94,16 @@ struct DynamicArray {
         }
         data[index] = value;
         sz++;
+    }
+
+    // insert element behind the currently last element
+    void push_back(int value) {
+        insert(sz, value);
+    }
+
+    // remove the last element.
+    void pop_back() {
+        sz--;
     }
 
     // remove elem at given index, other elems must retain relative order with no gaps between elements

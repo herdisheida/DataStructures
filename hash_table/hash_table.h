@@ -37,9 +37,23 @@ struct HashTable {
     }
 
     // copy constructor
+    HashTable(const HashTable& other) : buckets(0), bucket_count(0), sz(0) {
+        copy_from(other);
+    }
+
+    // auto destructor
+    ~HashTable() {
+        destroy();
+    }
 
     // assignment (operator=)
-
+    HashTable& operator=(const HashTable& other) {
+        if (this != &other) {
+            destroy();
+            copy_from(other);
+        }
+        return *this;
+    }
 
     // insert a key-value pair to the hash table. If they key is present, then nothing is inserted
     // insert()

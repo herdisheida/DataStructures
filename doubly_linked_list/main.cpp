@@ -34,18 +34,17 @@ struct DoublyLinkedList {
 
     // copy constructor (deep copy)
     DoublyLinkedList(const DoublyLinkedList& other) : DoublyLinkedList() {
-        // copy nodes in order from other
-        for (Node<T>* it = other.sentinel -> next; it != other.sentinel; it = it -> next) {
-            insert(sentinel, it -> data); // insert before sentinel = append
+        for (Node<T>* i = other.sentinel -> next; i != other.sentinel; i = i -> next) {
+            this -> insert(sentinel, i -> data);
         }
     }
 
     // assignment (operator=) (deep copy)
     DoublyLinkedList& operator=(const DoublyLinkedList& other) {
         if (this == &other) return *this;
-        clear();
-        for (Node<T>* it = other.sentinel -> next; it != other.sentinel; it = it -> next) {
-            insert(sentinel, it -> data);
+        this -> clear();
+        for (Node<T>* i = other.sentinel -> next; i != other.sentinel; i = i -> next) {
+            this -> insert(sentinel, i -> data);
         }
         return *this;
     }

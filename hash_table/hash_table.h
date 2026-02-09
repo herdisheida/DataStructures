@@ -5,6 +5,7 @@
 #include <cstddef>
 
 using std::cout;
+using std::hash;
 using std::size_t;
     
 
@@ -22,12 +23,17 @@ struct HashTable {
     size_t bucket_count;
     size_t sz;
 
+    // get the bucket index for a given key
+    size_t get_bucket_index(int key) const {
+        return hash<int>()(key) % bucket_count;
+    }
+
     // default constructor
-    HashTable(size_t bucket_count = 32) : bucket_count(bucket_count), sz(0) {
+    HashTable(size_t bucket_count = 8) : buckets(0), bucket_count(bucket_count), sz(0) {
+        bucket_count = (bucket_count < 1 ? 1 : bucket_count);
         buckets = new Node*[bucket_count];
-        for (size_t i = 0; i < bucket_count; i++) {
-            buckets[i] = nullptr;
-        }
+        for (std::size_t i = 0; i < bucket_count; i++) buckets[i] = 0;
+        sz = 0;
     }
 
     // copy constructor

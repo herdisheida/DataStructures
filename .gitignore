@@ -6,3 +6,7 @@ doubly_linked_list/program
 doubly_linked_list/main.o
 dynamic_array/main.o
 dynamic_array/program
+
+# ignore .o files and executable files
+*.o
+program

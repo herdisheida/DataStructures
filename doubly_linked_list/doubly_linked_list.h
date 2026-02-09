@@ -1,3 +1,6 @@
+#ifndef DOUBLY_LINKED_LIST_H
+#define DOUBLY_LINKED_LIST_H
+
 #include <cassert>
 #include <cstddef>
 
@@ -6,18 +9,20 @@ using std::size_t;
 
 template<typename T>
 struct Node {
-    T data{};
-    Node* prev = nullptr;
-    Node* next = nullptr;
+    T data;
+    Node* prev;
+    Node* next;
+
+    Node() : data(), prev(0), next(0) {}
 };
 
 template<typename T>
 struct DoublyLinkedList {
-    Node<T>* sentinel = nullptr;
-    size_t sz = 0;
+    Node<T>* sentinel;
+    size_t sz;
 
     // default constructor
-    DoublyLinkedList() {
+    DoublyLinkedList() : sentinel(0), sz(0) {
         sentinel = new Node<T>();
         sentinel -> next = sentinel;
         sentinel -> prev = sentinel;
@@ -27,13 +32,13 @@ struct DoublyLinkedList {
     ~DoublyLinkedList() {
         clear();
         delete sentinel;
-        sentinel = nullptr;
+        sentinel = 0;
     }
 
     // copy constructor (deep copy)
-    DoublyLinkedList(const DoublyLinkedList& other) : DoublyLinkedList() {
+    DoublyLinkedList(const DoublyLinkedList& other) : sentinel(0), sz(0) {
         for (Node<T>* i = other.sentinel -> next; i != other.sentinel; i = i -> next) {
-            this -> insert(sentinel, i -> data);
+            this -> insert(sentinel, i -> data);  // append
         }
     }
 
@@ -42,7 +47,7 @@ struct DoublyLinkedList {
         if (this == &other) return *this;
         this -> clear();
         for (Node<T>* i = other.sentinel -> next; i != other.sentinel; i = i -> next) {
-            this -> insert(sentinel, i -> data);
+            this -> insert(sentinel, i -> data);  // append
         }
         return *this;
     }
@@ -112,15 +117,10 @@ struct DoublyLinkedList {
     size_t size() const {
         return sz;
     }
-
-
 };
 
 
+typedef DoublyLinkedList<int> your_list_type;
+typedef Node<int> your_node_type;
 
-
-int main() {
-
-    
-
-}
+#endif

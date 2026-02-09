@@ -1,7 +1,6 @@
 #ifndef DOUBLY_LINKED_LIST_H
 #define DOUBLY_LINKED_LIST_H
 
-#include <cassert>
 #include <cstddef>
 
 using std::size_t;
@@ -95,21 +94,21 @@ struct DoublyLinkedList {
     }
 
     // front : return the first node of the list, not a sentinel node
-    Node<T>* begin_node() const {
+    Node<T>* begin_node() {
         return sentinel -> next;
     }
     // back : return the last node of the list, a sentinel node
-    Node<T>* sentinel_end_node() const {
+    Node<T>* sentinel_end_node() {
         return sentinel;
     }
 
     // return the node before the cursor node
-    Node<T>* predecessor(Node<T>* cursor) const {
+    Node<T>* predecessor(Node<T>* cursor) {
         return cursor -> prev;
     }
 
     // return the node after the cursor node
-    Node<T>* successor(Node<T>* cursor) const {
+    Node<T>* successor(Node<T>* cursor) {
         return cursor -> next;
     }
 
@@ -119,8 +118,5 @@ struct DoublyLinkedList {
     }
 };
 
-
-typedef DoublyLinkedList<int> your_list_type;
-typedef Node<int> your_node_type;
 
 #endif

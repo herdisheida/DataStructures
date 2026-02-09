@@ -5,6 +5,7 @@ using std::cout;
 using std::cin;
 using std::ws;
 
+
 your_array_type vecs[1000];
 
 int main() {

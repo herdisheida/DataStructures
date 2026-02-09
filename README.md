@@ -86,3 +86,18 @@ Let `n` be the current number of elements in the array.
 | Element access (read/write) |                            O(1) | No bounds checking; assumes index is valid               |
 | Resize                      |                            O(n) | If growing, new elements are default-initialized         |
 | Reserve                     |                            O(n) | If requested capacity ≤ current capacity, no effect      |
+
+### HashTable
+
+Let `n = size()` number of items in the Hash Table, `b = bucket_count`, and `α = n/b` (load factor).  
+This hash table uses **separate chaining** (linked lists in buckets) and **rehashes** when `n/b >= 1.2`.
+
+| Operation                         |           Time Complexity | Exceptional cases / notes                                                                       |
+| --------------------------------- | ------------------------: | ----------------------------------------------------------------------------------------------- |
+| Default construction              |                      O(b) | Allocates `b` bucket pointers and initializes                                                   |
+| Copy construction                 |                  O(n + b) | Deep copy; instances do not share nodes                                                         |
+| Assignment operator               |                  O(n + b) | Destroys old nodes then deep-copies; self-assignment is a no-op                                 |
+| Insert                            | Expected O(1), worst O(n) | If key already exists → no-op. If rehash happens → O(n + b) for that insertion (amortized O(1)) |
+| Erase                             | Expected O(1), worst O(n) | Input guarantees key exists                                                                     |
+| Element access (get/set existing) | Expected O(1), worst O(n) | Input guarantees key exists                                                                     |
+| Size                              |                      O(1) | None                                                                                            |

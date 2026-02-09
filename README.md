@@ -9,11 +9,11 @@
 
 ## Folder structure
 
-Each data structure is located in its own folder (e.g. dynamic_array/, doubly_linked_list/, etc), and each folder contains:
+Each data structure is located in its own folder and each folder contains:
 
 - a Makefile
 - source files
-- optional test input files (e.g. /test_input/test1.txt, /test_input/test2.txt)
+- optional test input files in `/test_input` folder
 
 ## Compile program and run program
 

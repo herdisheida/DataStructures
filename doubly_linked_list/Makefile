@@ -5,7 +5,7 @@ TARGET   := program
 SRCS := main.cpp
 OBJS := $(SRCS:.cpp=.o)
 
-INPUTS := test_input/test1.txt test_input/test2.txt
+INPUTS := input_tests/input1.txt input_tests/input2.txt
 
 all: info $(TARGET)
 

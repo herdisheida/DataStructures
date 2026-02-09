@@ -87,12 +87,12 @@ struct Heap {
 
     // provide access to the smallest element in the heap
     const T& peek() const {
-        // TODO
+        return data[0];  // top of heap-tree = smallest = first element in arr
     }
 
     // provide the size of the heap
     size_t size() const {
-        // TODO
+        return sz;
     }
 };
 

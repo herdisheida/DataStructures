@@ -148,6 +148,7 @@ struct HashTable {
 
                 delete curr;
                 sz--;
+                return;
             }
             prev = curr;
             curr = curr -> next;

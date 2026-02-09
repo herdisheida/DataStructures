@@ -127,7 +127,21 @@ struct HashTable {
 
     // remove the given key from the hash table
     void erase(int key) {
-        Node* n = find_node(key);
+        size_t idx = get_bucket_index(key);
+        Node* curr = buckets[idx];
+        Node* prev = 0;
+
+        while (curr) {
+            if (curr -> key == key) {
+                if (prev) prev -> next = curr -> next;
+                else buckets[idx] = curr -> next;  // curr was the first elem in bucket
+
+                delete curr;
+                sz--;
+            }
+            prev = curr;
+            curr = curr -> next;
+        }
     }
 
     // provide access to the value associated with a given key

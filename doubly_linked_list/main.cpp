@@ -92,11 +92,11 @@ struct DoublyLinkedList {
     }
 
     // front : return the first node of the list, not a sentinel node
-    Node<T>* begin_node(Node<T>* cursor) const {
+    Node<T>* begin_node() const {
         return sentinel -> next;
     }
     // back : return the last node of the list, a sentinel node
-    Node<T>* sentinel_end_node(Node<T>* cursor) const {
+    Node<T>* sentinel_end_node() const {
         return sentinel -> prev;
     }
 
@@ -111,7 +111,7 @@ struct DoublyLinkedList {
     }
 
     // return the size of the instance
-    size_t size(Node<T>* cursor) const {
+    size_t size() const {
         return sz;
     }
 

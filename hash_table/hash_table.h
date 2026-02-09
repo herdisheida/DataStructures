@@ -48,7 +48,7 @@ struct HashTable {
 
     // clear the nodes only (keep the bucket array)
     void clear_nodes_only() {
-        for (size_t i = 0; i < bucket_count; ++i) {
+        for (size_t i = 0; i < bucket_count; i++) {
             Node* curr = buckets[i];
             while (curr) {
                 Node* nxt = curr -> next;
@@ -179,7 +179,7 @@ struct HashTable {
         init(new_bucket_count);  // initalizes bucket_count, buckets and sz
 
         // re-hash items to new table and delete old nodes
-        for (size_t i = 0; i < old_bucket_count; ++i) {
+        for (size_t i = 0; i < old_bucket_count; i++) {
             Node* n = old_buckets[i];
             while (n) {                
                 _raw_insert(n -> key, n -> value);

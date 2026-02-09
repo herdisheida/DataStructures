@@ -24,7 +24,7 @@ struct DynamicArray {
     }
 
     // clear the instance and free memory
-    void clear() {
+    void destroy() {
         delete[] data;
         data = 0;
         sz = 0;
@@ -46,7 +46,7 @@ struct DynamicArray {
 
     // auto destructor
     ~DynamicArray() {
-        clear();
+        destroy();
     }
 
     // copy constructor (deep copy)
@@ -57,7 +57,7 @@ struct DynamicArray {
     // assignment (operator=) (deep copy)
     DynamicArray& operator=(const DynamicArray& other) {
         if (this != &other) {
-            clear();
+            destroy();
             copy_from(other);
         }
         return *this;

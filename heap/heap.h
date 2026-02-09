@@ -10,15 +10,48 @@ using std::size_t;
 
 template <typename T>
 struct Heap {
+    T* data;  // arr of heap elems
+    std::size_t sz;
+    std::size_t cap;
 
+
+    void destroy() {
+        delete[] data;
+        data = 0;
+        sz = 0;
+        cap = 0;
+    }
+
+    void copy_from(const Heap& other) {
+        sz = other.sz;
+        cap = other.cap;
+        data = new T[cap];
+        for (size_t i = 0; i < sz; i++) data[i] = other.data[i];
+    }
 
     // default constructor
+    Heap() : data(0), sz(0), cap(0) {
+
+    }
 
     // copy constructor
+    Heap(const Heap& other) : data(0), sz(0), cap(0) {
+        copy_from(other);
+    }
+
+    // auto destructor
+    ~Heap() {
+        destroy();
+    }
 
     // assignment (operator=)
-
-
+    Heap& operator=(const Heap& other) {
+        if (this != &other) {
+            destroy();
+            copy_from(other);
+        }
+        return *this;
+    }
 
     // insert an element to the heap
     void push(const T& value) {

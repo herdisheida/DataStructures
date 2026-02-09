@@ -34,14 +34,14 @@ struct DoublyLinkedList {
         sentinel = 0;
     }
 
-    // copy constructor (deep copy)
+    // copy constructor
     DoublyLinkedList(const DoublyLinkedList& other) : sentinel(0), sz(0) {
         for (Node<T>* i = other.sentinel -> next; i != other.sentinel; i = i -> next) {
             this -> insert(sentinel, i -> data);  // append
         }
     }
 
-    // assignment (operator=) (deep copy)
+    // assignment (operator=)
     DoublyLinkedList& operator=(const DoublyLinkedList& other) {
         if (this == &other) return *this;
         this -> clear();

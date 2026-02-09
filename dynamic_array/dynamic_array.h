@@ -89,8 +89,8 @@ struct DynamicArray {
     }
 
     // remove the last element.
-    T* pop_back() {
-        return data[--sz];
+    void pop_back() {
+        sz--;
     }
 
     // insert an elem at the given index, other elems must retain relative order
@@ -106,7 +106,7 @@ struct DynamicArray {
     }
 
     // remove elem at given index, other elems must retain relative order with no gaps between elements
-    T* erase(size_t index) {
+    void erase(size_t index) {
         for (size_t i = index + 1; i < sz; i++) {
             data[i - 1] = data[i];
         }

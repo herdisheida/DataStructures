@@ -1,9 +1,12 @@
 #ifndef DYNAMIC_ARRAY_H
 #define DYNAMIC_ARRAY_H
 
+#include <iostream>
 #include <cstddef>
 
+using std::cout;
 using std::size_t;
+
     
 
 template<typename T>
@@ -89,8 +92,9 @@ struct DynamicArray {
     // sets the size of the array to the given value, if it grows then new values get default values
     // There is no requirement that this affects the capacity.
     void resize(size_t new_size) {
-        // if new size is smaller.= capacity doesnt change
-        // is new size is larger than cap -> double capacity until it is large enough
+
+
+
     }
 
     // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
@@ -107,6 +111,16 @@ struct DynamicArray {
         delete[] data;
         data = new_data;
         cap = new_cap;
+    }
+
+    // print this instance
+    void print() const {
+        cout << sz << "\n";
+        for (size_t i = 0; i < sz; i++) {
+            if (i) cout << " ";  // space between elems
+            cout << data[i];
+        }
+        cout << "\n";
     }
 };
 

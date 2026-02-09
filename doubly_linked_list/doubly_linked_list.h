@@ -51,7 +51,7 @@ struct DoublyLinkedList {
         return *this;
     }
 
-    // remove and delete all nodes
+    // clear the list, leave sentinel node only
     void clear() {
         Node<T>* cur = sentinel -> next;
         while (cur != sentinel) {

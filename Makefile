@@ -1,8 +1,9 @@
-CC=clang
-CXX=clang++
-CFLAGS=-std=c++98 -Wall -Wextra -o program
+SUBDIRS := doubly_linked_list dynamic_array
 
+all:
+	for d in $(SUBDIRS); do $(MAKE) -C $$d; done
 
-build: main.cpp
-	$(CXX) $(CFLAGS) main.cpp
+clean:
+	for d in $(SUBDIRS); do $(MAKE) -C $$d clean; done
 
+.PHONY: all clean

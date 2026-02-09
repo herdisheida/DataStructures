@@ -78,13 +78,11 @@ struct DoublyLinkedList {
     
     // return the node before the cursor node
     Node<T>* predecessor(Node<T>* cursor) const {
-        assert(sentinel != cursor);  // not allowed
         return cursor -> prev;
     }
 
     // return the node after the cursor node
     Node<T>* successor(Node<T>* cursor) const {
-        assert(sentinel != cursor);  // not allowed
         return cursor -> next;
     }
 

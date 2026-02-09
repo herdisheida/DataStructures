@@ -170,27 +170,29 @@ struct HashTable {
     // re-hash to new bucket count
     void rehash(size_t new_bucket_count) {
         Node** old_buckets = buckets; // keep copy of old key-value pairs
-        
+        size_t old_bucket_count = bucket_count;
 
-        // reset all
-        bucket_count *= 2;
-        init(new_bucket_count); // resets sz
+        // new empty hash table
+        buckets = 0;
+        init(new_bucket_count);  // initalizes bucket_count, buckets and sz
 
-        // re-add items to bigger capacity bucket list
-        for (Node** bucket : old_buckets) {
-            Node* n = bucket;
-            while (n) {
-                insert(n -> key, n -> value);
-                n = n -> next;
+        // re-hash items to new table and delete old nodes
+        for (size_t i = 0; i < old_bucket_count; ++i) {
+            Node* n = old_buckets[i];
+            while (n) {                
+                insert(n -> key, n -> value);  // inserts into new table
+
+                Node* nxt = n -> next;
+                delete n;  // free old node
+                n = nxt;
             }
-        
-        delete[] old_buckets;
         }
+        delete[] old_buckets;
     }
 
     // when num of items in HashTable reach 120% of the num of buckets
     void ensure_capacity() {
-        if (sz >= bucket_count * 1.2) {
+        if (sz * 10 >= bucket_count * 12) {
             rehash(bucket_count * 2);
         }
     }

@@ -8,13 +8,14 @@ using std::cout;
 using std::size_t;
     
 
-template<typename T>
+
+template <typename T>
 struct HashTable {
     struct Node {
-        T key;
+        int key;
         T value;
         Node* next;
-        Node(T k, T v, Node* n) : key(k), value(v), next(n) {}
+        Node(int k, const T& v, Node* n) : key(k), value(v), next(n) {}
     };
 
     Node** buckets;

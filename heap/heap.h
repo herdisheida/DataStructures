@@ -31,7 +31,7 @@ struct Heap {
     }
 
     // provide access to the smallest element in the heap
-    void peek() {
+    const T& peek() const {
         // TODO
     }
 

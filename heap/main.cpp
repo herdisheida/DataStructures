@@ -30,39 +30,32 @@ int main() {
             cin >> other;
             other--; // change to 0-based index
             // assignment
-
+            heaps[id] = heaps[other];
         }
-        else if (op == 'i') {
+        else if (op == '+') {
             int key, value;
             cin >> key >> value;
-            // insert
-
+            // push
+            heaps[id].push(value);
         }
-        else if (op == 'e') {
+        else if (op == '-') {
             int key;
             cin >> key;
-            // erase
-
-            
+            // pop
+            heaps[id].pop();
         }
-        else if (op == 'g') {
+        else if (op == 'p') {
             int key;
             cin >> key;
-            // get
-
+            // peek
+            cout << heaps[id].peek() << endl;
             
         }
         else if (op == 's') {
             int key, value;
             cin >> key >> value;
-            // set
-
-            
-        }
-
-        else if (op == 'z') {
             // size
-
+            cout << heaps[id].size() << endl;
         }
         else {
             assert(false);

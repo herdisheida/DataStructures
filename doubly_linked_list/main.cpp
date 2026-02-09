@@ -112,7 +112,7 @@ struct DoublyLinkedList {
     }
 
     // return the size of the instance
-    Node<T>* size(Node<T>* cursor) const {
+    size_t size(Node<T>* cursor) const {
         return sz;
     }
 

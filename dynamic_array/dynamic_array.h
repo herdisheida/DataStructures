@@ -23,7 +23,7 @@ struct DynamicArray {
         data = new T[cap];
     }
 
-    // delete all elem
+    // clear the instance and free memory
     void clear() {
         delete[] data;
         data = 0;
@@ -53,7 +53,7 @@ struct DynamicArray {
     DynamicArray(const DynamicArray& other) : data(0), sz(0), cap(0) {
         copy_from(other);
     }
-
+    
     // assignment (operator=) (deep copy)
     DynamicArray& operator=(const DynamicArray& other) {
         if (this != &other) {
@@ -68,7 +68,7 @@ struct DynamicArray {
         return sz;
     }
 
-    // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
+    // ensures there is at least the given amount of slots for values
     void reserve(size_t new_cap) {
         if (new_cap <= cap) return;
 
@@ -97,17 +97,19 @@ struct DynamicArray {
     }
 
     // insert element behind the currently last element
-    void push_back(int value) {
+    void push_back(const T& value) {
         insert(sz, value);
     }
 
     // remove the last element
     void pop_back() {
+        if (sz == 0) return;  // nothing to pop
         sz--;
     }
 
     // remove elem at given index, other elems must retain relative order with no gaps between elements
     void erase(size_t index) {
+        if (sz == 0 || index >= sz) return;  // invalid index or nothing to erase
         for (size_t i = index + 1; i < sz; i++) {
             data[i - 1] = data[i];
         }
@@ -133,7 +135,6 @@ struct DynamicArray {
         }
         sz = new_size;
     }
-
 
     // print this instance
     void print() const {

@@ -14,6 +14,12 @@ struct Heap {
     std::size_t sz;
     std::size_t cap;
 
+    
+    void init(size_t initial_cap) {
+        sz = 0;
+        cap = (initial_cap <= 0 ? 1 : initial_cap);
+        data = new T[cap];
+    }
 
     void destroy() {
         delete[] data;
@@ -31,7 +37,7 @@ struct Heap {
 
     // default constructor
     Heap() : data(0), sz(0), cap(0) {
-
+        init(4);
     }
 
     // copy constructor

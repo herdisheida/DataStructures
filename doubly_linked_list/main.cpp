@@ -33,7 +33,7 @@ struct Node {
 template<typename T>
 struct DoublyLinkedList {
     Node<T>* sentinel = nullptr;
-    size_t sz = 0;
+    size_t size = 0;
 
     // constructor
     DoublyLinkedList() {
@@ -42,6 +42,24 @@ struct DoublyLinkedList {
         sentinel->prev = sentinel;
     }
 
+
+
+
+
+    // insert before cursor, return newly inserted node
+    Node<T>* insert(Node<T>* cursor, const T& value) {
+        Node<T>* new_node = new Node<T>();
+        new_node -> value = value;
+
+        new_node -> next = cursor;
+        new_node -> prev = cursor -> prev;
+
+        cursor -> prev -> next = new_node;
+        cursor -> prev = new_node;
+
+        size++;
+        return new_node;
+    }
     
 };
 

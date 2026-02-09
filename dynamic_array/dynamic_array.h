@@ -23,7 +23,7 @@ struct DynamicArray {
         data = new T[cap];
     }
 
-    // delete all elem, but keep the capacity
+    // delete all elem
     void clear() {
         delete[] data;
         data = 0;
@@ -101,7 +101,7 @@ struct DynamicArray {
         insert(sz, value);
     }
 
-    // remove the last element.
+    // remove the last element
     void pop_back() {
         sz--;
     }

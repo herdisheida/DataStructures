@@ -6,6 +6,8 @@ using std::cin;
 using std::ws;
 
 
+typedef DynamicArray<int> your_array_type;
+
 your_array_type vecs[1000];
 
 int main() {

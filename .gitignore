@@ -2,3 +2,5 @@ dynamically_sized_array.pdf
 doubly_linked_list.pdf
 .DS_Store
 *.pdf
+doubly_linked_list/program
+doubly_linked_list/main.o

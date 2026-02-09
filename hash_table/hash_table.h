@@ -160,24 +160,29 @@ struct HashTable {
     }
 
 
-    // def rebuild(self):
-    //     if self.item_count >= self.bucket_count * 1.2:
-    //         old_bucket_list = self.bucket_list
-
-    //         self.bucket_count *= 2
-    //         self.bucket_list = [Bucket() for _ in range(self.bucket_count)]
-    //         self.item_count = 0  # reset before redistributing
-
-    //         for bucket in old_bucket_list:
-    //             node = bucket.head
-    //             while node:
-    //                 self.insert(node.key, node.data)
-    //                 node = node.next
-
     // when num of items in HashTable reach 120% of the num of buckets
     // double the bucket_count and redistribute all key-value pairs
     void rebuild() {
+        if (sz >= bucket_count * 1.2) {
 
+            Node** old_buckets = buckets; // keep copy of old key-value pairs
+
+            // reset all
+            bucket_count *= 2;
+            buckets = init(bucket_count);
+            sz = 0;
+
+            // re-add items to bigger capacity bucket list
+            for (Node** bucket : old_buckets) {
+                Node* n = bucket;
+                while (n) {
+                    insert(n -> key, n -> value);
+                    n = n -> next;
+                }
+            
+            delete[] old_buckets;
+            }
+        }
     }
 
     // provide the size of the hash table

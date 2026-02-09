@@ -85,7 +85,6 @@ struct HashTable {
                 *ptr = new Node(current -> key, current -> value, 0);  // key, value, next
                 ptr = &((*ptr) -> next);
                 current = current -> next;
-
                 sz++;
             }
         }
@@ -117,7 +116,13 @@ struct HashTable {
 
     // insert a key-value pair to the hash table. If they key is present, then nothing is inserted
     void insert(int key, const T& value) {
-        Node* n = find_node(key);
+        if (find_node(key)) return;
+
+        rebuild(); // if needed
+
+        size_t idx = get_bucket_index(key);
+        buckets[idx] = new Node(key, value, buckets[idx]);
+        sz++;
     }
 
     // remove the given key from the hash table

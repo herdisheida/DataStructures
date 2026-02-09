@@ -28,12 +28,64 @@ struct HashTable {
         return hash<int>()(key) % bucket_count;
     }
 
-    // default constructor
-    HashTable(size_t bucket_count = 8) : buckets(0), bucket_count(bucket_count), sz(0) {
+
+    // initialize an empty instance
+    void init(size_t bucket_count) {
         bucket_count = (bucket_count < 1 ? 1 : bucket_count);
         buckets = new Node*[bucket_count];
-        for (std::size_t i = 0; i < bucket_count; i++) buckets[i] = 0;
+        for (size_t i = 0; i < bucket_count; i++) buckets[i] = 0;
         sz = 0;
+    }
+
+    // clear the nodes only (keep the bucket array)
+    void clear_nodes_only() {
+        for (size_t i = 0; i < bucket_count; ++i) {
+            Node* cur = buckets[i];
+            while (cur) {
+                Node* nxt = cur->next;
+                delete cur;
+                cur = nxt;
+            }
+            buckets[i] = 0;
+        }
+        sz = 0;
+    }
+
+    // clear the instance and free memory
+    void destroy() {
+        if (!buckets) return;
+        clear_nodes_only();
+        delete[] buckets;
+        buckets = 0;
+        bucket_count = 0;
+        sz = 0;
+    }
+
+    // copy from other instance (deep copy)
+    void copy_from(const HashTable& other) {
+        bucket_count = other.bucket_count;
+        sz = other.sz;
+        buckets = new Node*[bucket_count];
+
+        for (size_t i = 0; i < bucket_count; i++) {
+            buckets[i] = 0;
+            Node* current = other.buckets[i];
+            Node** ptr = &buckets[i];
+
+            while (current) {
+                *ptr = new Node(current -> key, current -> value, 0);  // key, value, next
+                ptr = &((*ptr) -> next);
+                current = current -> next;
+
+                sz++;
+            }
+        }
+    }
+
+
+    // default constructor
+    HashTable() : buckets(0), bucket_count(0), sz(0) {
+        init(8);
     }
 
     // copy constructor

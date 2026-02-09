@@ -145,6 +145,8 @@ struct HashTable {
 
     // remove the given key from the hash table
     void erase(int key) {
+        if (!buckets) return;
+
         size_t idx = _get_bucket_index(key);
         Node* curr = buckets[idx];
         Node* prev = 0;

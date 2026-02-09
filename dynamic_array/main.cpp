@@ -1,5 +1,6 @@
 #include <cassert>
 #include <iostream>
+#include "dynamic_array.h"
 
 using std::cout;
 using std::cin;

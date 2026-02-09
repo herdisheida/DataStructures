@@ -6,6 +6,7 @@ using std::cout;
 using std::cin;
 using std::ws;
 
+
 your_list_type lists[1000];
 your_node_type* cursors[1000];
 

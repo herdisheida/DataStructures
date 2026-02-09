@@ -80,6 +80,14 @@ struct DynamicArray {
 
     // insert an elem at the given index, other elems must retain relative order
     void insert(size_t index, int value) {
+        if (sz == cap) reserve(cap * 2);
+
+        // create an empty slot to place inserted value
+        for (size_t i = sz; i > index; i--) {
+            data[i] = data[i - 1];
+        }
+        data[index] = value;
+        sz++;
     }
 
     // remove elem at given index, other elems must retain relative order with no gaps between elements
@@ -102,7 +110,7 @@ struct DynamicArray {
             reserve(new_cap);
         }
         if (new_size > sz) {
-            // new space has default value = 0
+            // new slot has default value = 0
             for (size_t i = sz; i < new_size; i++) data[i] = 0;
         }
         sz = new_size;

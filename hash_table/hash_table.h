@@ -121,15 +121,17 @@ struct HashTable {
         return *this;
     }
 
-    // insert a key-value pair to the hash table. If they key is present, then nothing is inserted
-    void insert(int key, const T& value) {
-        if (find_node(key)) return;
-
-        ensure_capacity(); // if needed
-
+    void _raw_insert(int key, const T& value) {
         size_t idx = get_bucket_index(key);
         buckets[idx] = new Node(key, value, buckets[idx]);
         sz++;
+    }
+
+    // insert a key-value pair to the hash table
+    void insert(int key, const T& value) {
+        if (find_node(key)) return;
+        ensure_capacity(); // if needed
+        _raw_insert(key, value);
     }
 
     // remove the given key from the hash table
@@ -180,7 +182,7 @@ struct HashTable {
         for (size_t i = 0; i < old_bucket_count; ++i) {
             Node* n = old_buckets[i];
             while (n) {                
-                insert(n -> key, n -> value);  // inserts into new table
+                _raw_insert(n -> key, n -> value);  // inserts into new table
 
                 Node* nxt = n -> next;
                 delete n;  // free old node

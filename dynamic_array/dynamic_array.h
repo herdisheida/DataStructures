@@ -39,6 +39,22 @@ struct DynamicArray {
         for (size_t i = 0; i < sz; i++) data[i] = other.data[i];
     }
 
+    // ensures there is at least the given amount of slots for values
+    void reserve(size_t new_cap) {
+        if (new_cap <= cap) return;
+
+        // copy old data to new data 
+        T* new_data = new T[new_cap];
+        for (size_t i = 0; i < sz; i++) {
+            new_data[i] = data[i];
+        }
+
+        // delete old and set new values
+        delete[] data;
+        data = new_data;
+        cap = new_cap;
+    }
+
     // default constructor
     DynamicArray() : data(0), sz(0), cap(0) {
         init(4);
@@ -66,22 +82,6 @@ struct DynamicArray {
     // return the size of the instance
     size_t size() const {
         return sz;
-    }
-
-    // ensures there is at least the given amount of slots for values
-    void reserve(size_t new_cap) {
-        if (new_cap <= cap) return;
-
-        // copy old data to new data 
-        T* new_data = new T[new_cap];
-        for (size_t i = 0; i < sz; i++) {
-            new_data[i] = data[i];
-        }
-
-        // delete old and set new values
-        delete[] data;
-        data = new_data;
-        cap = new_cap;
     }
 
     // insert an elem at the given index, other elems must retain relative order

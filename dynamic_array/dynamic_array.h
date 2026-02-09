@@ -73,7 +73,7 @@ struct DynamicArray {
         if (new_cap < cap) return;
 
         // copy old data to new data 
-        T new_data = new T[new_cap];
+        T* new_data = new T[new_cap];
         for (size_t i = 0; i < sz; i++) {
             new_data[i] = data[i];
         }

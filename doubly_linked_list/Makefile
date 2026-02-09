@@ -13,7 +13,7 @@ info:
 	@echo "======================================"
 	@echo "Build complete."
 	@echo
-	@echo "To run:"
+	@echo "To run with own input:"
 	@echo "  ./$(TARGET)"
 	@echo
 	@echo "To run tests, use one of:"

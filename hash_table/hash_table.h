@@ -39,10 +39,11 @@ struct HashTable {
     }
 
     // initialize an empty instance
-    void init(size_t bucket_count) {
-        bucket_count = (bucket_count < 1 ? 1 : bucket_count);
-        buckets = new Node*[bucket_count];
-        for (size_t i = 0; i < bucket_count; i++) buckets[i] = 0;
+    void init(size_t new_bucket_count) {
+        this -> bucket_count = new_bucket_count;
+
+        buckets = new Node*[this -> bucket_count];
+        for (size_t i = 0; i < this -> bucket_count; i++) buckets[i] = 0;
         sz = 0;
     }
 

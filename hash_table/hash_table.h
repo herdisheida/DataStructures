@@ -31,10 +31,7 @@ struct HashTable {
 
     // get the bucket index for a given key
     size_t _get_bucket_index(int key) const {
-        // TODO DELETE debu
-        if (bucket_count == 0) {
-            std::cerr << "bucket_count is 0!\n";
-        }
+        if (bucket_count == 0) return 0;  // avoid division by zero
         return _hash_key(key) % bucket_count;
     }
 

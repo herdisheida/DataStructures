@@ -118,15 +118,26 @@ struct HashTable {
 
     // insert a key-value pair to the hash table. If they key is present, then nothing is inserted
     // insert()
+    void insert(int key, const T& value) {
+
+    }
 
     // remove the given key from the hash table
     // erase()
+    void erase(int key) {
+
+    }
 
     // provide access to the value associated with a given key
-    // element access(key)
+    // operator[]
+    T& operator[](int key) {
+    }    
 
     // provide the size of the hash table
     // size()
+    size_t size() const {
+        return sz;
+    }
 };
 
 

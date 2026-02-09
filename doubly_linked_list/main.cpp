@@ -5,6 +5,8 @@
 using std::cout;
 using std::cin;
 
+using std::size_t;
+
 
 // TODO : 
 // You must implement the: 
@@ -23,15 +25,15 @@ using std::cin;
 
 template<typename T>
 struct Node {
-    T value;
-    Node* prev;
-    Node* next;
+    T value{};
+    Node* prev = nullptr;
+    Node* next = nullptr;
 };
 
 template<typename T>
 struct DoublyLinkedList {
-    Node<T>* sentinel;
-    size_t size;
+    Node<T>* sentinel = nullptr;
+    size_t sz = 0;
 
     // constructor
     DoublyLinkedList() {

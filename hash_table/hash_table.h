@@ -49,11 +49,11 @@ struct HashTable {
     // clear the nodes only (keep the bucket array)
     void clear_nodes_only() {
         for (size_t i = 0; i < bucket_count; ++i) {
-            Node* cur = buckets[i];
-            while (cur) {
-                Node* nxt = cur->next;
-                delete cur;
-                cur = nxt;
+            Node* curr = buckets[i];
+            while (curr) {
+                Node* nxt = curr -> next;
+                delete curr;
+                curr = nxt;
             }
             buckets[i] = 0;
         }

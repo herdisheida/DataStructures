@@ -1,31 +1,14 @@
 #include <cassert>
 #include <cstddef>
-#include <iostream>
 
-using std::cout;
-using std::cin;
 
 using std::size_t;
-
-
-// TODO : 
-// You must implement the: 
-    // default constructor
-    // copy constructor
-    // assignment (operator=)
-    // front
-    // back
-    // insert
-    // erase
-    // size
-    // successor
-    // predecessor
 
 
 
 template<typename T>
 struct Node {
-    T value{};
+    T data{};
     Node* prev = nullptr;
     Node* next = nullptr;
 };
@@ -35,21 +18,55 @@ struct DoublyLinkedList {
     Node<T>* sentinel = nullptr;
     size_t sz = 0;
 
-    // constructor
+    // default constructor
     DoublyLinkedList() {
         sentinel = new Node<T>();
-        sentinel->next = sentinel;
-        sentinel->prev = sentinel;
+        sentinel -> next = sentinel;
+        sentinel -> prev = sentinel;
     }
 
+    // destructor
+    ~DoublyLinkedList() {
+        clear();
+        delete sentinel;
+        sentinel = nullptr;
+    }
 
+    // copy constructor (deep copy)
+    DoublyLinkedList(const DoublyLinkedList& other) : DoublyLinkedList() {
+        // copy nodes in order from other
+        for (Node<T>* it = other.sentinel -> next; it != other.sentinel; it = it -> next) {
+            insert(sentinel, it -> data); // insert before sentinel = append
+        }
+    }
 
+    // assignment (operator=) (deep copy)
+    DoublyLinkedList& operator=(const DoublyLinkedList& other) {
+        if (this == &other) return *this;
+        clear();
+        for (Node<T>* it = other.sentinel -> next; it != other.sentinel; it = it -> next) {
+            insert(sentinel, it -> data);
+        }
+        return *this;
+    }
 
+    // remove and delete all nodes
+    void clear() {
+        Node<T>* cur = sentinel -> next;
+        while (cur != sentinel) {
+            Node<T>* nxt = cur -> next;
+            delete cur;
+            cur = nxt;
+        }
+        sentinel -> next = sentinel;
+        sentinel -> prev = sentinel;
+        sz = 0;
+    }
 
     // insert before cursor, return newly inserted node
-    Node<T>* insert(Node<T>* cursor, const T& value) {
+    Node<T>* insert(Node<T>* cursor, const T& data) {
         Node<T>* new_node = new Node<T>();
-        new_node -> value = value;
+        new_node -> data = data;
 
         new_node -> next = cursor;
         new_node -> prev = cursor -> prev;
@@ -61,7 +78,6 @@ struct DoublyLinkedList {
         return new_node;
     }
     
-
     // erase the cursor node, returning the node after the erased node
     Node<T>* erase(Node<T>* cursor) {
         assert(sentinel != cursor);  // not allowed
@@ -76,16 +92,14 @@ struct DoublyLinkedList {
         return after;
     }
 
-
-    // return the first node of the list, not a sentinel node
-    Node<T>* front(Node<T>* cursor) const {
+    // front : return the first node of the list, not a sentinel node
+    Node<T>* begin_node(Node<T>* cursor) const {
         return sentinel -> next;
     }
-    // return the last node of the list, a sentinel node
-    Node<T>* back(Node<T>* cursor) const {
+    // back : return the last node of the list, a sentinel node
+    Node<T>* sentinel_end_node(Node<T>* cursor) const {
         return sentinel -> prev;
     }
-
 
     // return the node before the cursor node
     Node<T>* predecessor(Node<T>* cursor) const {
@@ -104,24 +118,6 @@ struct DoublyLinkedList {
 
 
 };
-
-
-
-
-void sentinel_end_node() {
-
-}
-
-void begin_node() {
-
-}
-
-
-
-void size() {
-
-}
-
 
 
 

@@ -33,34 +33,32 @@ int main() {
             tables[id] = tables[other];
         }
         else if (op == 'i') {
-            size_t index;
-            int value;
-            cin >> index >> value;
+            int key, value;
+            cin >> key >> value;
             // insert
-            tables[id].insert(k, v);
+            tables[id].insert(key, value);
         }
         else if (op == 'e') {
-            size_t index;
-            cin >> index;
+            int key;
+            cin >> key;
             // erase
-            tables[id].erase(k);
+            tables[id].erase(key);
 
         }
         else if (op == 'g') {
-            int index;
-            cin >> index;
+            int key;
+            cin >> key;
             // get
-            const HashTable::Node* n = tables[id].find(k);
+            const HashTable<int>::Node* n = tables[id].find_node(key);
             if (n) cout << n-> value << endl;
             else cout << "-" << endl;
 
         }
         else if (op == 's') {
-            size_t index;
-            int value;
-            cin >> index >> value;
+            int key, value;
+            cin >> key >> value;
             // set
-            tables[id][k] = v;
+            tables[id][key] = value;
         }
 
         else if (op == 'z') {

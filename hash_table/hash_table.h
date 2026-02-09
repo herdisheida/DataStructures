@@ -33,6 +33,7 @@ struct HashTable {
     size_t _get_bucket_index(int key) const {
         if (bucket_count == 0) return 0;  // avoid division by zero
         return _hash_key(key) % bucket_count;
+
     }
 
     Node* find_node(int key) const {
@@ -47,7 +48,7 @@ struct HashTable {
 
     // initialize an empty instance
     void init(size_t new_bucket_count) {
-        this -> bucket_count = new_bucket_count > 0 ? new_bucket_count : 8;
+        this -> bucket_count = new_bucket_count < 1 ? 8 : new_bucket_count;
 
         buckets = new Node*[this -> bucket_count];
         for (size_t i = 0; i < this -> bucket_count; i++) buckets[i] = 0;

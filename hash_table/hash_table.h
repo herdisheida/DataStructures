@@ -106,6 +106,13 @@ struct HashTable {
         }
     }
 
+    // when num of items in HashTable reach 120% of the num of buckets
+    void ensure_capacity() {
+        if (sz * 10 >= bucket_count * 12) {
+            rehash(bucket_count * 2);
+        }
+    }
+
     // default constructor
     HashTable() : buckets(0), bucket_count(0), sz(0) {
         init(8);
@@ -203,13 +210,6 @@ struct HashTable {
             }
         }
         delete[] old_buckets;
-    }
-
-    // when num of items in HashTable reach 120% of the num of buckets
-    void ensure_capacity() {
-        if (sz * 10 >= bucket_count * 12) {
-            rehash(bucket_count * 2);
-        }
     }
 
     // provide the size of the hash table

@@ -95,8 +95,18 @@ struct DynamicArray {
 
     // ensures there is at least the given amount of slots for values. This should never affect the elements in the data structure
     void reserve(size_t new_cap) {
-        // if reserve < capacyt = do nothing - already have enough space
-        // if reserve > capacity = double capacity until it is large enough, copy old data to new data, delete old data
+        if (new_cap < cap) return;
+
+        // copy old data to new data 
+        T new_data = new T[new_cap];
+        for (size_t i = 0; i < sz; i++) {
+            new_data[i] = data[i];
+        }
+
+        // delete old and set new values
+        delete[] data;
+        data = new_data;
+        cap = new_cap;
     }
 };
 

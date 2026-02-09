@@ -25,7 +25,7 @@ struct DoublyLinkedList {
         sentinel -> prev = sentinel;
     }
 
-    // destructor
+    // auto destructor
     ~DoublyLinkedList() {
         clear();
         delete sentinel;

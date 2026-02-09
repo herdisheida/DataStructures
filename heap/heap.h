@@ -12,14 +12,33 @@ template <typename T>
 struct Heap {
 
 
+    // default constructor
 
-// Default construction - initializes an empty heap. This is not tested explicitly here!
-// Assignment and copy construction - must properly copy the contents of another instance of the data structure.
-// Ensure the two instances do not share memory afterwards!
-// Push - must insert an element to the heap.
-// Pop - must remove the smallest element from the heap.
-// Peek - must provide access to the smallest element in the heap.
-// Size - must provide the size of the heap.
+    // copy constructor
+
+    // assignment (operator=)
+
+
+
+    // insert an element to the heap
+    void push(const T& value) {
+        // TODO
+    }
+
+    // remove the smallest element from the heap
+    void pop() {
+        // TODO
+    }
+
+    // provide access to the smallest element in the heap
+    void peek() {
+        // TODO
+    }
+
+    // provide the size of the heap
+    size_t size() const {
+        // TODO
+    }
 };
 
 

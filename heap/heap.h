@@ -139,7 +139,6 @@ struct Heap {
 
     // provide access to the smallest element in the heap
     const T& peek() const {
-        assert(sz > 0);
         return data[0];  // top of heap-tree = smallest = first element in arr
     }
 

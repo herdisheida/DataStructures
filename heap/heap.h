@@ -61,19 +61,15 @@ struct Heap {
         // For min-heap: child < parent => swap
         if (index == 0) return;
 
-        while (index > 0) {
-            size_t parent = (index - 1) / 2;  // parent of index
-            if (!(data[index] < data[parent])) break;
+        size_t parent = (index - 1) / 2;
+        if (data[index] < data[parent]) {
             swap(index, parent);
-            index = parent;
+            bubbleUp(parent);
         }
     }
 
     void sinkDown(size_t index) {
-        // TODO refactor
-        // after removing smallest element
-        // the last element is put at the top of the heap-tree
-        // sift it down until heap property is satisfied
+        // For min-heap: parent > child (smaller child) => swap
 
         size_t curr = index;       // assume curr index is smallest
         size_t l = 2 * index + 1;  // left = 2 * index + 1
@@ -131,6 +127,8 @@ struct Heap {
 
     // remove the smallest element (root) from the heap
     T pop() {
+        assert(sz > 0);
+        
         T ret = data[0];
         sz--;
 
@@ -143,6 +141,7 @@ struct Heap {
 
     // provide access to the smallest element in the heap
     const T& peek() const {
+        assert(sz > 0);
         return data[0];  // top of heap-tree = smallest = first element in arr
     }
 

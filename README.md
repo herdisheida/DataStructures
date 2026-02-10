@@ -31,10 +31,9 @@ make
 
 3. Run the program
 
-|                                                | What to type in Terminal               |
-| ---------------------------------------------- | -------------------------------------- |
-| **Enter input manually in the terminal:**      | `./program`                            |
-| **Run the program with test input.txt files:** | `./program < input_tests/test<nr>.txt` |
+|                                           | What to type in Terminal |
+| ----------------------------------------- | ------------------------ |
+| **Enter input manually in the terminal:** | `./program`              |
 
 ### Clean compiled files
 

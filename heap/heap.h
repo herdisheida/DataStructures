@@ -139,11 +139,12 @@ struct Heap {
     }
 
     // remove the smallest element (root) from the heap
-    void pop() {
+    T* pop() {
         // get last element in heap
         T lastElement = data[sz - 1];
 
-        // replace root with last element
+        // replace root with last element + delete last element
+        T* smallest = data[0]; // TODO fix memory leak and return smallest by value instead of pointer
         data[0] = lastElement;
 
         // decrease size of heap
@@ -151,6 +152,7 @@ struct Heap {
 
         // sift down new root element until heap property is satisfied
         sinkDown(0);
+        return smallest;
     }
 
     // provide access to the smallest element in the heap

@@ -96,12 +96,29 @@ struct Heap {
 
     // insert an element to the heap
     void push(const T& value) {
-        // TODO
+        // insert new element at the end of the arr
+        reserve(sz + 1);
+        data[sz] = value;
+
+        // increase size of heap
+        sz++;
+        // sift up new element until heap property is satisfied
+        bubbleUp(sz - 1); 
     }
 
-    // remove the smallest element from the heap
+    // remove the smallest element (root) from the heap
     void pop() {
-        // TODO
+        // get last element in heap
+        T lastElement = data[sz - 1];
+
+        // replace root with last element
+        data[0] = lastElement;
+
+        // decrease size of heap
+        sz--;
+
+        // sift down new root element until heap property is satisfied
+        sinkDown(0);
     }
 
     // provide access to the smallest element in the heap

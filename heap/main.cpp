@@ -42,7 +42,7 @@ int main() {
             int key;
             cin >> key;
             // pop
-            heaps[id].pop();
+            cout << heaps[id].pop() << endl;
         }
         else if (op == 'p') {
             int key;

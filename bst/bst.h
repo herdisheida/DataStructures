@@ -59,26 +59,31 @@ struct BST {
 
 
 
-    // • Find - return the node with the given key. If such a node does not exist, returns a sentinel value.
-    // • Lower Bound - return the node with the smallest key which is greater than or equal to the given key, If such a
+    // Find - return the node with the given key. If such a node does not exist, returns a sentinel value.
+    // Lower Bound - return the node with the smallest key which is greater than or equal to the given key, If such a
     // node does not exist, returns a sentinel value.
-    // • Upper Bound - return the node with the smallest key which is strictly greater than the given key. If such a node
+    // Upper Bound - return the node with the smallest key which is strictly greater than the given key. If such a node
     // does not exist, returns sentinel value.
-    // • Insert - must insert a node with the given key-value pair, returning the newly inserted node. If the key exists
+    // Insert - must insert a node with the given key-value pair, returning the newly inserted node. If the key exists
     // already, nothing is inserted and the existing node is returned.
-    // • Erase - must remove the given node. If given node is sentinel value, does nothing.
-    // • Front - return the node with the minimum key in the tree. If no such node exists, returns a sentinel value.
-    // • Back - return the node with the maximum key in the tree. If no such node exists, returns a sentinel value.
-    // • Predecessor - return the node before the given node, that is, the node with the largest key which is lower than
+    // Erase - must remove the given node. If given node is sentinel value, does nothing.
+    // Front - return the node with the minimum key in the tree. If no such node exists, returns a sentinel value.
+    // Back - return the node with the maximum key in the tree. If no such node exists, returns a sentinel value.
+    // Predecessor - return the node before the given node, that is, the node with the largest key which is lower than
     // the given node’s key. If such a node does not exist, or if given node is sentinel value, returns sentinel value.
-    // • Successor - return the node after the given node, that is, the node with the smallest key which is higher than the
+    // Successor - return the node after the given node, that is, the node with the smallest key which is higher than the
     // given node’s key. If such a node does not exist, or if given node is sentinel value, returns sentinel value.
-    // • Rank - return the index of the node within the tree’s left-to-right order, or in other words, how many nodes have
+    // Rank - return the index of the node within the tree’s left-to-right order, or in other words, how many nodes have
     // smaller keys than the given node.
-    // • k-th Element - return the node with the given index within the tree’s left-to-right order.
-    // • Element Access - provide access to reading and writing the value associated with a key, usually directly through
+    // k-th Element - return the node with the given index within the tree’s left-to-right order.
+    // Element Access - provide access to reading and writing the value associated with a key, usually directly through
     // the public interface of a node instead of the tree
-    // • Size - return the size of the instanc
+
+
+    // Size - return the size of the instance
+    size_t size() const {
+        return sz;
+    }
 
 };
 

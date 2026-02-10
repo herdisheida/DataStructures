@@ -8,6 +8,7 @@ using std::size_t;
 
 template<typename T>
 struct Node {
+    int key;
     T data;
     Node* right;
     Node* left;
@@ -60,27 +61,58 @@ struct BST {
 
 
     // Find - return the node with the given key. If such a node does not exist, returns a sentinel value.
-    // Lower Bound - return the node with the smallest key which is greater than or equal to the given key, If such a
-    // node does not exist, returns a sentinel value.
-    // Upper Bound - return the node with the smallest key which is strictly greater than the given key. If such a node
-    // does not exist, returns sentinel value.
-    // Insert - must insert a node with the given key-value pair, returning the newly inserted node. If the key exists
-    // already, nothing is inserted and the existing node is returned.
+    Node<T>* find(int key) const {
+    }
+
+
+    // Lower Bound - return the node with the smallest key which is greater than or equal to the given key, If such a node does not exist, returns a sentinel value.
+    Node<T>* lower_bound(int key) const {
+    }
+
+    // Upper Bound - return the node with the smallest key which is strictly greater than the given key. If such a node does not exist, returns sentinel value.
+    Node<T>* upper_bound(int key) const {
+    }
+
+    // Insert - must insert a node with the given key-value pair, returning the newly inserted node. If the key exists already, nothing is inserted and the existing node is returned.
+    Node<T>* insert(int key, const T& value) {
+    }
+
     // Erase - must remove the given node. If given node is sentinel value, does nothing.
+    void erase(Node<T>* node) {
+    }
+
     // Front - return the node with the minimum key in the tree. If no such node exists, returns a sentinel value.
+    Node<T>* front() const {
+    }
+
     // Back - return the node with the maximum key in the tree. If no such node exists, returns a sentinel value.
-    // Predecessor - return the node before the given node, that is, the node with the largest key which is lower than
-    // the given node’s key. If such a node does not exist, or if given node is sentinel value, returns sentinel value.
+    Node<T>* back() const {
+    }
+
+    // Predecessor - return the node before the given node, that is, the node with the largest key which is lower than the given node’s key. If such a node does not exist, or if given node is sentinel value, returns sentinel value.
+    Node<T>* predecessor(const Node<T>* node) const {
+    }
+
     // Successor - return the node after the given node, that is, the node with the smallest key which is higher than the
+    Node<T>* successor(const Node<T>* node) const {
+    }
+
     // given node’s key. If such a node does not exist, or if given node is sentinel value, returns sentinel value.
-    // Rank - return the index of the node within the tree’s left-to-right order, or in other words, how many nodes have
-    // smaller keys than the given node.
+    
+    
+    // Rank - return the index of the node within the tree’s left-to-right order, or in other words, how many nodes have smaller keys than the given node.
+    size_t rank(const Node<T>* node) const {
+    }
+
     // k-th Element - return the node with the given index within the tree’s left-to-right order.
-    // Element Access - provide access to reading and writing the value associated with a key, usually directly through
-    // the public interface of a node instead of the tree
+    Node<T>* kth(size_t k) const {
+    }
 
+    // Element Access - provide access to reading and writing the value associated with a key, usually directly through the public interface of a node instead of the tree
+    T& operator[](int key) {
+    }
 
-    // Size - return the size of the instance
+    // return the size of the instance
     size_t size() const {
         return sz;
     }

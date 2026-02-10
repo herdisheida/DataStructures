@@ -57,63 +57,63 @@ The list uses a **sentinel node**. In an empty list:
 - `sentinel -> next == sentinel`
 - `sentinel -> prev == sentinel`
 
-| Operation              | Time Complexity | Exceptional cases / notes                                                             |
-| ---------------------- | --------------: | ------------------------------------------------------------------------------------- |
-| Default construction   |            O(1) | Creates sentinel node; empty list has cursor at sentinel                              |
-| Copy construction      |            O(n) | Deep copy; instances do not share nodes                                               |
-| Assignment operator    |            O(n) | Clears old nodes then deep-copies; self-assignment is a no-op                         |
-| Front                  |            O(1) | In an empty list, `front` returns the sentinel (since `sentinel -> next == sentinel`) |
-| Back                   |            O(1) | Returns the sentinel node                                                             |
-| Insert (before cursor) |            O(1) | Assumes cursor is a valid node in this list (including sentinel)                      |
-| Erase (cursor)         |            O(1) | Cursor must not be the sentinel                                                       |
-| Predecessor            |            O(1) | If cursor is sentinel, predecessor is last node (or sentinel if empty)                |
-| Successor              |            O(1) | If cursor is sentinel, successor is first node (or sentinel if empty)                 |
-| Size                   |            O(1) |                                                                                       |
+| Operation              | Time Complexity | Exceptional cases |
+| ---------------------- | --------------: | ----------------- |
+| Default construction   |            O(1) |                   |
+| Copy construction      |            O(n) |                   |
+| Assignment operator    |            O(n) |                   |
+| Front                  |            O(1) |                   |
+| Back                   |            O(1) |                   |
+| Insert (before cursor) |            O(1) |                   |
+| Erase (cursor)         |            O(1) |                   |
+| Predecessor            |            O(1) |                   |
+| Successor              |            O(1) |                   |
+| Size                   |            O(1) |                   |
 
 ### Dynamically Sized Array
 
 Let `n` be the current number of elements in the array.
 
-| Operation                   |                 Time Complexity | Exceptional cases / notes                                |
-| --------------------------- | ------------------------------: | -------------------------------------------------------- |
-| Default construction        |                            O(1) | Initializes an empty array with a fixed initial capacity |
-| Copy construction           |                            O(n) | Deep copy; the two instances do not share memory         |
-| Assignment operator         |                            O(n) | Self-assignment check; deep copy of all elements         |
-| Push back                   | Amortized O(1), worst-case O(n) | Worst case occurs when reallocation is required          |
-| Pop back                    |                            O(1) | If the array is empty, operation has no effect           |
-| Insert                      |                            O(n) | Elements after the index are shifted right               |
-| Erase                       |                            O(n) | Elements after the index are shifted left                |
-| Element access (read/write) |                            O(1) | No bounds checking; assumes index is valid               |
-| Resize                      |                            O(n) | If growing, new elements are default-initialized         |
-| Reserve                     |                            O(n) | If requested capacity ≤ current capacity, no effect      |
-| Print                       |                            O(n) |                                                          |
+| Operation                   |                 Time Complexity | Exceptional cases                                   |
+| --------------------------- | ------------------------------: | --------------------------------------------------- |
+| Default construction        |                            O(1) |                                                     |
+| Copy construction           |                            O(n) |                                                     |
+| Assignment operator         |                            O(n) |                                                     |
+| Push back                   | Amortized O(1), worst-case O(n) | Worst case occurs when reallocation is required     |
+| Pop back                    |                            O(1) | If the array is empty, operation has no effect      |
+| Insert (at index)           |            O(n), best case O(1) | best case occurs when inserting at the end          |
+| Erase (at index)            |            O(n), best case O(1) | best case occurs when erasing the last element      |
+| Element access (read/write) |                            O(1) | assume index is valid                               |
+| Resize                      |                            O(n) |                                                     |
+| Reserve                     |                            O(n) | If requested capacity ≤ current capacity, no effect |
+| Print                       |                            O(n) |                                                     |
 
 ### Heap
 
 Let `n` be the current number of elements in the heap.
 
-| Operation            | Time Complexity | Exceptional cases / notes                                |
-| -------------------- | --------------: | -------------------------------------------------------- |
-| Default construction |            O(1) | Initializes an empty array with a fixed initial capacity |
-| Copy construction    |            O(n) | Deep copy; the two instances do not share memory         |
-| Assignment operator  |            O(n) | Self-assignment check; deep copy of all elements         |
-| Push                 |                 |                                                          |
-| Pop                  |                 |                                                          |
-| Insert               |                 |                                                          |
-| Peak                 |                 |                                                          |
-| Size                 |            O(1) |                                                          |
+| Operation            | Time Complexity | Exceptional cases |
+| -------------------- | --------------: | ----------------- |
+| Default construction |            O(1) |                   |
+| Copy construction    |            O(n) |                   |
+| Assignment operator  |            O(n) |                   |
+| Push                 |                 |                   |
+| Pop                  |                 |                   |
+| Insert               |                 |                   |
+| Peak                 |                 |                   |
+| Size                 |            O(1) |                   |
 
 ### HashTable
 
 Let `n = size()` number of items in the Hash Table, `b = bucket_count`, and `α = n/b` (load factor).  
 This hash table uses **separate chaining** (linked lists in buckets) and **rehashes** when `n/b >= 1.2`.
 
-| Operation                         |           Time Complexity | Exceptional cases / notes                                                                       |
-| --------------------------------- | ------------------------: | ----------------------------------------------------------------------------------------------- |
-| Default construction              |                      O(b) | Allocates `b` bucket pointers and initializes                                                   |
-| Copy construction                 |                  O(n + b) | Deep copy; instances do not share nodes                                                         |
-| Assignment operator               |                  O(n + b) | Destroys old nodes then deep-copies; self-assignment is a no-op                                 |
-| Insert                            | Expected O(1), worst O(n) | If key already exists → no-op. If rehash happens → O(n + b) for that insertion (amortized O(1)) |
-| Erase                             | Expected O(1), worst O(n) | Input guarantees key exists                                                                     |
-| Element access (get/set existing) | Expected O(1), worst O(n) | Input guarantees key exists                                                                     |
-| Size                              |                      O(1) |                                                                                                 |
+| Operation                         |           Time Complexity | Exceptional cases / notes                                                                           |
+| --------------------------------- | ------------------------: | --------------------------------------------------------------------------------------------------- |
+| Default construction              |                      O(b) | Allocates `b` bucket pointers and initializes                                                       |
+| Copy construction                 |                  O(n + b) |                                                                                                     |
+| Assignment operator               |                  O(n + b) |                                                                                                     |
+| Insert                            | Expected O(1), worst O(n) | If key already exists, no effect. If rehash happens -> O(n + b) for that insertion (amortized O(1)) |
+| Erase                             | Expected O(1), worst O(n) | Input guarantees key exists                                                                         |
+| Element access (get/set existing) | Expected O(1), worst O(n) | Input guarantees key exists                                                                         |
+| Size                              |                      O(1) |                                                                                                     |

@@ -58,6 +58,7 @@ struct Heap {
     }
 
     void bubbleUp(size_t index) {
+        // TODO refactor
         // newly inserted elemnt is set at end of arr
         // sift it up until heap property is satisfied
 
@@ -76,10 +77,29 @@ struct Heap {
     }
 
     void sinkDown(size_t index) {
-        // TODO
+        // TODO refactor
         // after removing smallest element
         // the last element is put at the top of the heap-tree
         // sift it down until heap property is satisfied
+
+        int curr = index;       // assume curr index is smallest
+        int l = 2 * index + 1;  // left = 2 * index + 1
+        int r = 2 * index + 2;  // right = 2 * index + 2
+
+        // If left child is smaller than root
+        if (l < sz && data[l] < data[curr])
+            curr = l;
+
+        // If right child is smaller than smallest so far
+        if (r < sz && data[r] < data[curr])
+            curr = r;
+
+        // If smallest is not root
+        if (curr != index) {
+            swap(index, curr);
+            // Recursively heapify the affected sub-tree
+            sinkDown(curr);
+        }
     }
 
     // default constructor

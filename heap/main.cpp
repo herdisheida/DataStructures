@@ -33,26 +33,22 @@ int main() {
             heaps[id] = heaps[other];
         }
         else if (op == '+') {
-            int key, value;
-            cin >> key >> value;
+            int value;
+            cin >> value;
             // push
             heaps[id].push(value);
         }
         else if (op == '-') {
-            int key;
-            cin >> key;
             // pop
             cout << heaps[id].pop() << endl;
         }
         else if (op == 'p') {
-            int key;
-            cin >> key;
             // peek
             cout << heaps[id].peek() << endl;
         }
         else if (op == 's') {
-            int key, value;
-            cin >> key >> value;
+            int value;
+            cin >> value;
             // size
             cout << heaps[id].size() << endl;
         }

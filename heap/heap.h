@@ -75,6 +75,8 @@ struct Heap {
         size_t l = 2 * index + 1;  // left = 2 * index + 1
         size_t r = 2 * index + 2;  // right = 2 * index + 2
 
+        if (l >= sz) return;               // no children
+
         // If left child is smaller than root
         if (l < sz && data[l] < data[curr])
             curr = l;

@@ -117,3 +117,7 @@ This hash table uses **separate chaining** (linked lists in buckets) and **rehas
 | `erase(key)`                      | Expected O(1), worst O(n) | If key doesn't exist, no effect               |
 | Element access (get/set existing) | Expected O(1), worst O(n) | If key doesn't exist, no effect               |
 | `size()`                          |                      O(1) |                                               |
+
+### Self Balancing Binary Search Tree
+
+// TODO add time complexities and exceptional cases for BST

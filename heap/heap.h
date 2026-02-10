@@ -63,7 +63,7 @@ struct Heap {
         // sift it up until heap property is satisfied
 
         // find parent of indexed element
-        int parent = (index - 1) / 2;
+        size_t parent = (index - 1) / 2;
         if (parent >= 0) { 
             // For Min-heap
             // If current node is smaller than its parent 
@@ -82,9 +82,9 @@ struct Heap {
         // the last element is put at the top of the heap-tree
         // sift it down until heap property is satisfied
 
-        int curr = index;       // assume curr index is smallest
-        int l = 2 * index + 1;  // left = 2 * index + 1
-        int r = 2 * index + 2;  // right = 2 * index + 2
+        size_t curr = index;       // assume curr index is smallest
+        size_t l = 2 * index + 1;  // left = 2 * index + 1
+        size_t r = 2 * index + 2;  // right = 2 * index + 2
 
         // If left child is smaller than root
         if (l < sz && data[l] < data[curr])
@@ -144,7 +144,7 @@ struct Heap {
         T lastElement = data[sz - 1];
 
         // replace root with last element + delete last element
-        T* smallest = data[0]; // TODO fix memory leak and return smallest by value instead of pointer
+        T* rootNode = data[0]; // TODO fix memory leak and return smallest by value instead of pointer
         data[0] = lastElement;
 
         // decrease size of heap
@@ -152,7 +152,7 @@ struct Heap {
 
         // sift down new root element until heap property is satisfied
         sinkDown(0);
-        return smallest;
+        return rootNode;
     }
 
     // provide access to the smallest element in the heap

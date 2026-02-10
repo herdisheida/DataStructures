@@ -39,7 +39,7 @@ int main() {
         }
         else if (op == '-') {
             // pop
-            cout << heaps[id].pop() << endl;
+            heaps[id].pop();
         }
         else if (op == 'p') {
             // peek

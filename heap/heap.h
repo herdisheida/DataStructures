@@ -146,6 +146,7 @@ struct Heap {
         // replace root with last element + delete last element
         T rootNode = data[0]; // TODO fix memory leak and return smallest by value instead of pointer
         data[0] = lastElement;
+        delete &lastElement; // TODO fix memory leak
 
         // decrease size of heap
         sz--;

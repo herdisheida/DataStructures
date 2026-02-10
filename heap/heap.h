@@ -1,10 +1,8 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#include <iostream>
 #include <cstddef>
 
-using std::cout;
 using std::size_t;
 
 
@@ -128,9 +126,7 @@ struct Heap {
     }
 
     // remove the smallest element (root) from the heap
-    T pop() {
-        assert(sz > 0);
-        
+    T pop() {        
         T ret = data[0];
         sz--;
 

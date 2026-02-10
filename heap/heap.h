@@ -129,31 +129,23 @@ struct Heap {
     // insert an element to the heap
     void push(const T& value) {
         // insert new element at the end of the arr
-        reserve(sz + 1);
+        if (sz == cap) reserve(cap * 2);
         data[sz] = value;
 
-        // increase size of heap
-        sz++;
-        // sift up new element until heap property is satisfied
         bubbleUp(sz - 1); 
+        sz++;
     }
 
     // remove the smallest element (root) from the heap
     T pop() {
-        // get last element in heap
-        T lastElement = data[sz - 1];
-
-        // replace root with last element + delete last element
-        T rootNode = data[0]; // TODO fix memory leak and return smallest by value instead of pointer
-        data[0] = lastElement;
-        delete &lastElement; // TODO fix memory leak
-
-        // decrease size of heap
+        T ret = data[0];
         sz--;
 
-        // sift down new root element until heap property is satisfied
-        sinkDown(0);
-        return rootNode;
+        if (sz > 0) {
+            data[0] = data[sz];
+            sinkDown(0);
+        }
+        return ret;
     }
 
     // provide access to the smallest element in the heap

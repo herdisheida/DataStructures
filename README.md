@@ -43,8 +43,6 @@ To remove compiled object files and the executable:
 make clean
 ```
 
-## Anything else a student wishes to say. Put it here and not in the Canvas comments!
-
 ## Time Complexities & Exceptional Cases
 
 ### Doubly Linked List

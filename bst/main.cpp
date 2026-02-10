@@ -1,10 +1,13 @@
 #include <cassert>
 #include <iostream>
-// #include "your_tree.h"
+#include "bst.h"
 
 using std::cout;
 using std::cin;
 using std::ws;
+
+typedef BST<int,int> your_tree_type;
+typedef Node<int,int> your_node_type;
 
 your_tree_type<int, int> trees[1000];
 your_node_type<int, int>* cursors[1000];

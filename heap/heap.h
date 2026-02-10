@@ -58,9 +58,21 @@ struct Heap {
     }
 
     void bubbleUp(size_t index) {
-        // TODO
         // newly inserted elemnt is set at end of arr
         // sift it up until heap property is satisfied
+
+        // find parent of indexed element
+        int parent = (index - 1) / 2;
+        if (parent >= 0) { 
+            // For Min-heap
+            // If current node is smaller than its parent 
+            // Swap both of them and call heapify again 
+            if (data[index] < data[parent]) { 
+                swap(index, parent); 
+                // Recursively heapify the parent node 
+                bubbleUp(parent); 
+            } 
+        } 
     }
 
     void sinkDown(size_t index) {

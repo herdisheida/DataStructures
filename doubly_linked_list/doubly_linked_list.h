@@ -81,8 +81,6 @@ struct DoublyLinkedList {
     
     // erase the cursor node, returning the node after the erased node
     Node<T>* erase(Node<T>* cursor) {
-        assert(sentinel != cursor);  // not allowed
-
         Node<T>* after = cursor->next;
 
         cursor -> prev -> next = cursor -> next;  // disconnect before (lhs)

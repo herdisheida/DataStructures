@@ -145,7 +145,7 @@ struct HashTable {
 
     // insert a key-value pair to the hash table
     void insert(int key, const T& value) {
-        if (find_node(key)) return;
+        if (find_node(key)) return;  // key already exists
         ensure_capacity(); // if needed
         _raw_insert(key, value);
     }
@@ -153,7 +153,7 @@ struct HashTable {
     // remove the given key from the hash table
     void erase(int key) {
         if (!buckets) return;
-        if (!find_node(key)) return;
+        if (!find_node(key)) return;  // key doesn't exist
 
         size_t idx = _get_bucket_index(key);
         Node* curr = buckets[idx];

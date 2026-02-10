@@ -56,63 +56,64 @@ The list uses a **sentinel node**. In an empty list:
 - `sentinel -> next == sentinel`
 - `sentinel -> prev == sentinel`
 
-| Operation              | Time Complexity | Exceptional cases |
-| ---------------------- | --------------: | ----------------- |
-| Default construction   |            O(1) |                   |
-| Copy construction      |            O(n) |                   |
-| Assignment operator    |            O(n) |                   |
-| Front                  |            O(1) |                   |
-| Back                   |            O(1) |                   |
-| Insert (before cursor) |            O(1) |                   |
-| Erase (cursor)         |            O(1) |                   |
-| Predecessor            |            O(1) |                   |
-| Successor              |            O(1) |                   |
-| Size                   |            O(1) |                   |
+| Operation                              | Time Complexity | Exceptional cases                                                |
+| -------------------------------------- | --------------: | ---------------------------------------------------------------- |
+| Default construction                   |            O(1) |                                                                  |
+| Copy construction                      |            O(n) |                                                                  |
+| Assignment `operator=`                 |            O(n) |                                                                  |
+| `begin_node()`                         |            O(1) | Invalid if list is empty (front would be sentinel)               |
+| `sentinel_end_node()`                  |            O(1) |                                                                  |
+| `insert(cursor, data)` (before cursor) |            O(1) | Invalid if cursor is not a node belonging to this list           |
+| `erase(cursor)`                        |            O(1) | Invalid if cursor is sentinel, not in this list or if list empty |
+| `predecessor()`                        |            O(1) | Invalid if cursor not in list                                    |
+| `successor()`                          |            O(1) | Invalid if cursor not in list                                    |
+| `size()`                               |            O(1) |                                                                  |
 
 ### Dynamically Sized Array
 
 Let `n` be the current number of elements in the array.
 
-| Operation                   |                 Time Complexity | Exceptional cases                                   |
-| --------------------------- | ------------------------------: | --------------------------------------------------- |
-| Default construction        |                            O(1) |                                                     |
-| Copy construction           |                            O(n) |                                                     |
-| Assignment operator         |                            O(n) |                                                     |
-| Push back                   | Amortized O(1), worst-case O(n) | Worst case occurs when reallocation is required     |
-| Pop back                    |                            O(1) | If the array is empty, operation has no effect      |
-| Insert (at index)           |            O(n), best case O(1) | best case occurs when inserting at the end          |
-| Erase (at index)            |            O(n), best case O(1) | best case occurs when erasing the last element      |
-| Element access (read/write) |                            O(1) | assume index is valid                               |
-| Resize                      |                            O(n) |                                                     |
-| Reserve                     |                            O(n) | If requested capacity ≤ current capacity, no effect |
-| Print                       |                            O(n) |                                                     |
+| Operation                   |            Time Complexity | Exceptional cases                                                            |
+| --------------------------- | -------------------------: | ---------------------------------------------------------------------------- |
+| Default construction        |                       O(1) |                                                                              |
+| Copy construction           |                       O(n) |                                                                              |
+| Assignment `operator=`      |                       O(n) |                                                                              |
+| `push_back(value)`          | Amortized O(1), worst O(n) | Worst case when resizing                                                     |
+| `pop_back()`                |                       O(1) | If the array is empty, no effect                                             |
+| `insert(index, value)`      |            O(n), best O(1) | best case when inserting at the end, worst when resizing or index very small |
+| `erase(index)`              |            O(n), best O(1) | best case when erasing the last element, worst when index is very small      |
+| Element access (read/write) |                       O(1) | Invalid if index is out of bounds                                            |
+| `resize(new_size)`          |                       O(n) | If new_size < capacity && new_size < size, no effect O(1)                    |
+| `reserve(new_cap)`          |                       O(n) | If new_cap ≤ current capacity, no effect                                     |
+| `print()`                   |                       O(n) | -                                                                            |
 
 ### Heap
 
 Let `n` be the current number of elements in the heap.
 
-| Operation            | Time Complexity | Exceptional cases |
-| -------------------- | --------------: | ----------------- |
-| Default construction |            O(1) |                   |
-| Copy construction    |            O(n) |                   |
-| Assignment operator  |            O(n) |                   |
-| Push                 |                 |                   |
-| Pop                  |                 |                   |
-| Insert               |                 |                   |
-| Peak                 |                 |                   |
-| Size                 |            O(1) |                   |
+| Operation              |                           Time Complexity | Exceptional cases                                                                            |
+| ---------------------- | ----------------------------------------: | -------------------------------------------------------------------------------------------- |
+| Default construction   |                                      O(1) |                                                                                              |
+| Copy construction      |                                      O(n) |                                                                                              |
+| Assignment `operator=` |                                      O(n) |                                                                                              |
+| `push()`               | Amortized O(log n), best O(1), worst O(n) | Worst when resizing. Heapify step is O(log n). Best case when inserted elem doesn’t move up. |
+| `pop()`                |                       O(log n), best O(1) | Invalid if empty. Best case if moved last element already satisfies heap property.           |
+| `peak()`               |                                      O(1) | Invalid if empty                                                                             |
+| `size()`               |                                      O(1) |                                                                                              |
 
 ### HashTable
 
 Let `n = size()` number of items in the Hash Table, `b = bucket_count`, and `α = n/b` (load factor).  
 This hash table uses **separate chaining** (linked lists in buckets) and **rehashes** when `n/b >= 1.2`.
 
-| Operation                         |           Time Complexity | Exceptional cases / notes                                                                           |
-| --------------------------------- | ------------------------: | --------------------------------------------------------------------------------------------------- |
-| Default construction              |                      O(b) | Allocates `b` bucket pointers and initializes                                                       |
-| Copy construction                 |                  O(n + b) |                                                                                                     |
-| Assignment operator               |                  O(n + b) |                                                                                                     |
-| Insert                            | Expected O(1), worst O(n) | If key already exists, no effect. If rehash happens -> O(n + b) for that insertion (amortized O(1)) |
-| Erase                             | Expected O(1), worst O(n) | Input guarantees key exists                                                                         |
-| Element access (get/set existing) | Expected O(1), worst O(n) | Input guarantees key exists                                                                         |
-| Size                              |                      O(1) |                                                                                                     |
+- Worst case time complexities occur when all keys hash to the same bucket (bad hash function) and thus all operations become O(n) due to traversing a single linked list of length n.
+
+| Operation                         |           Time Complexity | Exceptional cases / notes                     |
+| --------------------------------- | ------------------------: | --------------------------------------------- |
+| Default construction              |                      O(b) | Initializes `b` bucket pointer array          |
+| Copy construction                 |                  O(n + b) | Copies all nodes + bucket array               |
+| Assignment `operator=`            |                  O(n + b) | Clears + copies                               |
+| `insert(key, value)`              | Expected O(1), worst O(n) | If key exists, no effect. If rehash, O(n + b) |
+| `erase(key)`                      | Expected O(1), worst O(n) | If key doesn't exist, no effect               |
+| Element access (get/set existing) | Expected O(1), worst O(n) | If key doesn't exist, no effect               |
+| `size()`                          |                      O(1) |                                               |

@@ -36,47 +36,19 @@ int main() {
             int value;
             cin >> value;
             // push back
-            stack[instance].push_back(value);
+            stack[instance].push(value);
         }
         else if (op == '-') {
             // pop back
-            stack[instance].pop_back();
+            cout << stack[instance].pop() << endl;
         }
-        else if (op == 'i') {
-            size_t index;
-            int value;
-            cin >> index >> value;
-            // insert
-            stack[instance].insert(index, value);
-        }
-        else if (op == 'e') {
-            size_t index;
-            cin >> index;
+        else if (op == 't') {
             // erase
-            stack[instance].erase(index);
-        }
-        else if (op == 'g') {
-            int index;
-            cin >> index;
-            // get
-            cout << stack[instance][index] << endl;
+            cout << stack[instance].top() << endl;
         }
         else if (op == 's') {
-            size_t index;
-            int value;
-            cin >> index >> value;
             // set
-            stack[instance][index] = value;
-        }
-        else if (op == 'r') {
-            size_t sz;
-            cin >> sz;
-            // resize
-            stack[instance].resize(sz);
-        }
-        else if (op == 'p') {
-            // print
-            stack[instance].print();
+            cout << stack[instance].size() << endl;
         }
         else {
             assert(false);

@@ -50,7 +50,7 @@ struct Stack {
         data = new_data;
         cap = new_cap;
     }
-
+ 
 
     // default constructor
     Stack() : data(0), sz(0), cap(0) {
@@ -76,6 +76,22 @@ struct Stack {
         return *this;
     }
 
+
+    // Push - must insert an element on top of the stack.
+    void push(const T& value) {
+    }
+
+    // Pop - must remove the top element off of the stack.
+    void pop() {
+    }
+
+    // Top - must provide access to the top element of the stack.
+    T& top() {
+    }
+
+    // Size - must provide the size of the stack
+    size_t size() const {
+    }
 
 };
 

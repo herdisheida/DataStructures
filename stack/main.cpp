@@ -40,7 +40,7 @@ int main() {
         }
         else if (op == '-') {
             // pop back
-            cout << stack[instance].pop() << endl;
+            stack[instance].pop();
         }
         else if (op == 't') {
             // erase

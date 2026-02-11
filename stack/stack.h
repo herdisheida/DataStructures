@@ -86,7 +86,7 @@ struct Stack {
     }
 
     // provide access to the top element of the stack.
-    T& top() {
+    T& top() const {
         return data[sz - 1];
     }
 

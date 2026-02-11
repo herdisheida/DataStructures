@@ -10,7 +10,7 @@ using std::ws;
 
 typedef Stack<int> your_stack_type;
 
-your_stack_type stack[1000];
+your_stack_type stacks[1000];
 
 int main() {
     int q;
@@ -30,25 +30,25 @@ int main() {
             cin >> other;
             other--; // change to 0-based index
             // assignment
-            stack[instance] = stack[other];
+            stacks[instance] = stacks[other];
         }
         else if (op == '+') {
             int value;
             cin >> value;
             // push
-            stack[instance].push(value);
+            stacks[instance].push(value);
         }
         else if (op == '-') {
             // pop
-            stack[instance].pop();
+            stacks[instance].pop();
         }
         else if (op == 't') {
             // top
-            cout << stack[instance].top() << endl;
+            cout << stacks[instance].top() << endl;
         }
         else if (op == 's') {
             // size
-            cout << stack[instance].size() << endl;
+            cout << stacks[instance].size() << endl;
         }
         else {
             assert(false);

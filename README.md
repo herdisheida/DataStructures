@@ -96,7 +96,7 @@ Let `n` be the current number of elements in the stack.
 | Assignment `operator=` |                       O(n) |                                  |
 | `push()`               | Amortized O(1), worst O(n) | Worst case when resizing         |
 | `pop()`                |                       O(1) | If the array is empty, no effect |
-| `top()`                |                       O(1) |                                  |
+| `top()`                |                       O(1) | Invalid if empty                 |
 | `size()`               |                       O(1) |                                  |
 
 ### Heap

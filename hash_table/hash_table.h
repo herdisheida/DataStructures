@@ -24,20 +24,23 @@ struct HashTable {
 
 
     // hash function for keys
-    size_t _hash_key(int key) const {
+    size_t hash_key(int key) const {
+        // knuth multiplicative hash
         unsigned int x = (unsigned int) key;
-        return (size_t) (x * 2654435761u);
+        x *= 2654435761u;  // 2^32 * golden ratio
+        x ^= (x >> 32);  // mix bits to reduce collisions
+        return (size_t) x;
     }
 
     // get the bucket index for a given key
-    size_t _get_bucket_index(int key) const {
+    size_t get_bucket_index(int key) const {
         if (bucket_count == 0) return 0;  // avoid division by zero
-        return _hash_key(key) % bucket_count;
+        return hash_key(key) % bucket_count;
 
     }
 
     Node* find_node(int key) const {
-        size_t idx = _get_bucket_index(key);
+        size_t idx = get_bucket_index(key);
         Node* curr = buckets[idx];
         while (curr) {
             if (curr -> key == key) return curr;
@@ -138,7 +141,7 @@ struct HashTable {
     }
 
     void _raw_insert(int key, const T& value) {
-        size_t idx = _get_bucket_index(key);
+        size_t idx = get_bucket_index(key);
         buckets[idx] = new Node(key, value, buckets[idx]);
         sz++;
     }
@@ -155,7 +158,7 @@ struct HashTable {
         if (!buckets) return;
         if (!find_node(key)) return;  // key doesn't exist
 
-        size_t idx = _get_bucket_index(key);
+        size_t idx = get_bucket_index(key);
         Node* curr = buckets[idx];
         Node* prev = 0;
 
@@ -183,7 +186,7 @@ struct HashTable {
 
         // set new value
         ensure_capacity();
-        size_t idx = _get_bucket_index(key);
+        size_t idx = get_bucket_index(key);
         buckets[idx] = new Node(key, T(), buckets[idx]);
         sz++;
         return buckets[idx] -> value;

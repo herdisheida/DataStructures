@@ -1,13 +1,20 @@
 # DataStructures
 
-// TODO finish readme
-// TODO ef ég hef tíma template-a types í data structure frá int í hva sem er
+- [Implemented Abstract Data Structures](#implemented-abstract-data-structures)
+- [Folder structure](#folder-structure)
+- [Compile program and run program](#compile-program-and-run-program)
+- [Time Complexities & Exceptional Cases](#time-complexities--exceptional-cases)
 
-## What abstract data structures you implemented and a general summary of how they are implemented. For example, specify the growth factor of your dynamically sized array, specify what kind of self-balancing binary search tree you used, mention any data structures you used to implement other data structures. Imagine that you are documenting your library enough that other programmers can use it.
+## Implemented Abstract Data Structures
 
-### What needs to be written in the terminal to compile and run the program. If you provide additional files for the tests, then clarify that and say how to run and verify the tests ran correctly.
+- [Doubly Linked List](#doubly-linked-list): A linked list where each node has a pointer to both the next and previous node. It uses a sentinel node to simplify edge cases.
+- [Dynamically Sized Array](#dynamically-sized-array): An array that resizes itself when capacity is reached. The growth factor is 2 (capacity doubles when resizing).
+- [Stack](#stack): A last-in-first-out (LIFO) data structure implemented using a dynamically sized array.
+- [Heap](#heap): A binary heap implemented using a dynamically sized array. It maintains the min heap property.
+- [Hash Table](#hash-table): A hash table using separate chaining for collision resolution. It rehashes when the load factor exceeds 1.2.
+- [Self Balancing Binary Search Tree](#self-balancing-binary-search-tree): Not implemented.
 
-### Folder structure
+## Folder structure
 
 Each data structure is located in its own folder and each folder contains:
 
@@ -15,7 +22,7 @@ Each data structure is located in its own folder and each folder contains:
 - source files
 - optional test input files in `/test_input` folder
 
-### Compile program and run program
+## Compile program and run program
 
 1. Navigate to the folder of the data structure you want to run:
 
@@ -129,7 +136,3 @@ This hash table uses **separate chaining** (linked lists in buckets) and **rehas
 | `erase(key)`                      | Expected O(1), worst O(n) | If key doesn't exist, no effect               |
 | Element access (get/set existing) | Expected O(1), worst O(n) | If key doesn't exist, no effect               |
 | `size()`                          |                      O(1) |                                               |
-
-### Self Balancing Binary Search Tree
-
-// TODO add time complexities and exceptional cases for BST

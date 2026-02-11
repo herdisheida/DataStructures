@@ -1,4 +1,4 @@
-SUBDIRS := bst deque doubly_linked_list dynamic_array hash_table heap
+SUBDIRS := bst stack doubly_linked_list dynamic_array hash_table heap
 
 all:
 	for d in $(SUBDIRS); do $(MAKE) -C $$d; done

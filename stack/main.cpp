@@ -35,19 +35,19 @@ int main() {
         else if (op == '+') {
             int value;
             cin >> value;
-            // push back
+            // push
             stack[instance].push(value);
         }
         else if (op == '-') {
-            // pop back
+            // pop
             stack[instance].pop();
         }
         else if (op == 't') {
-            // erase
+            // top
             cout << stack[instance].top() << endl;
         }
         else if (op == 's') {
-            // set
+            // size
             cout << stack[instance].size() << endl;
         }
         else {

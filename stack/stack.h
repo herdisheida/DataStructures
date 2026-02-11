@@ -36,19 +36,17 @@ struct Stack {
     }
 
     // ensures there is at least the given amount of slots for values
-    void reserve(size_t new_cap) {
-        if (new_cap <= cap) return;
+    void resize() {
+        if (sz == cap) {
+            // double capacity and copy old items to new data array
+            size_t new_cap = cap * 2;
+            T* new_data = new T[new_cap];
+            for (size_t i = 0; i < sz; i++) new_data[i] = data[i];
 
-        // copy old data to new data 
-        T* new_data = new T[new_cap];
-        for (size_t i = 0; i < sz; i++) {
-            new_data[i] = data[i];
+            delete[] data;
+            data = new_data;
+            cap = new_cap;
         }
-
-        // delete old and set new values
-        delete[] data;
-        data = new_data;
-        cap = new_cap;
     }
  
 

@@ -73,17 +73,21 @@ struct Stack {
         return *this;
     }
 
-
     // insert an element on top of the stack.
     void push(const T& value) {
+        resize();
+        data[sz] = value;
+        sz++;
     }
 
     // remove the top element off of the stack.
     void pop() {
+        if (sz > 0) sz--;
     }
 
     // provide access to the top element of the stack.
     T& top() {
+        return data[sz - 1];
     }
 
     // provide the size of the stack

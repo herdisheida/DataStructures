@@ -85,6 +85,20 @@ Let `n` be the current number of elements in the array.
 | `reserve(new_cap)`          |                       O(n) | If new_cap ≤ current capacity, no effect                                     |
 | `print()`                   |                       O(n) | -                                                                            |
 
+### Stack
+
+Let `n` be the current number of elements in the stack.
+
+| Operation              |            Time Complexity | Exceptional cases                |
+| ---------------------- | -------------------------: | -------------------------------- |
+| Default construction   |                       O(1) |                                  |
+| Copy construction      |                       O(n) |                                  |
+| Assignment `operator=` |                       O(n) |                                  |
+| `push()`               | Amortized O(1), worst O(n) | Worst case when resizing         |
+| `pop()`                |                       O(1) | If the array is empty, no effect |
+| `top()`                |                       O(1) | Invalid if the array is empty    |
+| `size()`               |                       O(1) |                                  |
+
 ### Heap
 
 Let `n` be the current number of elements in the heap.

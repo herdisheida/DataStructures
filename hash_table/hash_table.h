@@ -28,7 +28,7 @@ struct HashTable {
         // knuth multiplicative hash
         unsigned int x = (unsigned int) key;
         x *= 2654435761u;  // 2^32 * golden ratio
-        x ^= (x >> 32);  // mix bits to reduce collisions
+        x ^= (x >> 16);  // mix bits to reduce collisions
         return (size_t) x;
     }
 

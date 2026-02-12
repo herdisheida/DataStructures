@@ -25,7 +25,7 @@ Each data structure is located in its own folder and each folder contains:
 - source files (`.cpp` and `.h` files)
 - assignment information (`.pdf` files)
 
-## Compile program and run program
+## Compile and run program
 
 #### Compile
 

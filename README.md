@@ -1,5 +1,9 @@
 # DataStructures
 
+**Herdis Heida J. Gudjohnsen**
+
+## Table of Contents
+
 - [Implemented Abstract Data Structures](#implemented-abstract-data-structures)
 - [Folder structure](#folder-structure)
 - [Compile program and run program](#compile-program-and-run-program)
@@ -7,42 +11,52 @@
 
 ## Implemented Abstract Data Structures
 
-- [Doubly Linked List](#doubly-linked-list): A linked list where each node has a pointer to both the next and previous node. It uses a sentinel node to simplify edge cases.
-- [Dynamically Sized Array](#dynamically-sized-array): An array that resizes itself when capacity is reached. The growth factor is 2 (capacity doubles when resizing).
-- [Stack](#stack): A last-in-first-out (LIFO) data structure implemented using a dynamically sized array.
-- [Heap](#heap): A binary heap implemented using a dynamically sized array. It maintains the min heap property.
-- [Hash Table](#hash-table): A hash table using separate chaining for collision resolution. It rehashes when the load factor exceeds 1.2.
-- [Self Balancing Binary Search Tree](#self-balancing-binary-search-tree): Not implemented.
+- [Doubly Linked List](/doubly_linked_list/): A linked list where each node has a pointer to both the next and previous node. It uses a sentinel node to simplify edge cases.
+- [Dynamically Sized Array](/dynamic_array/): An array that resizes itself when capacity is reached. The growth factor is 2 (capacity doubles when resizing).
+- [Stack](/stack/): A last-in-first-out (LIFO) data structure implemented using a dynamically sized array.
+- [Heap](/heap/): A binary heap implemented using a dynamically sized array. It maintains the min heap property.
+- [Hash Table](/hash_table/): A hash table using separate chaining for collision resolution. It rehashes when the load factor exceeds 1.2.
 
 ## Folder structure
 
 Each data structure is located in its own folder and each folder contains:
 
 - a Makefile
-- source files
-- optional test input files in `/test_input` folder
+- source files (`.cpp` and `.h` files)
+- assignment information (`.pdf` files)
 
 ## Compile program and run program
 
-1. Navigate to the folder of the data structure you want to run:
+#### Compile
+
+- You have two options:
+
+| What you want to build    | Where you are                       | Command |
+| ------------------------- | ----------------------------------- | ------- |
+| Build all data structures | Project _root_ folder               | `make`  |
+| Build one data structure  | Inside _that_ data structure folder | `make`  |
+
+#### Run
+
+1. Go into the folder you want to run:
 
 ```bash
 cd <folder>
 ```
 
-2. Compile the program using make:
+2. Build (if you haven't already):
 
 ```bash
 make
 ```
 
-3. Run the program
+3. Run
 
-|                                           | What to type in Terminal |
-| ----------------------------------------- | ------------------------ |
-| **Enter input manually in the terminal:** | `./program`              |
+```bash
+./program
+```
 
-### Clean compiled files
+#### Clean
 
 To remove compiled object files and the executable:
 

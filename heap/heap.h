@@ -15,7 +15,7 @@ struct Heap {
     
     void init(size_t initial_cap) {
         sz = 0;
-        cap = (initial_cap <= 0 ? 1 : initial_cap);
+        cap = (initial_cap == 0 ? 1 : initial_cap);
         data = new T[cap];
     }
 

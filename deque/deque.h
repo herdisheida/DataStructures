@@ -75,19 +75,26 @@ struct Deque {
         return *this;
     }
 
+    // insert an elem at the given index
+    void insert(size_t index, const T& value) {
+        if (sz == cap) reserve(cap * 2);
+
+        // create an empty slot to place inserted value
+        for (size_t i = sz; i > index; i--) {
+            data[i] = data[i - 1];
+        }
+        data[index] = value;
+        sz++;
+    }
+
     // insert an element to the front of the deque
     void push_front(const T& value) {
-        // TODO þetta er old
-        if (sz == cap) reserve(cap * 2);
-        data[sz] = value;
-        sz++;
+        insert(0, value);
     }
 
     // insert an element to the back of the deque
     void push_back(const T& value) {
-        if (sz == cap) reserve(cap * 2);
-        data[sz] = value;
-        sz++;
+        insert(sz, value);
     }
 
     // remove the front element off of the deque

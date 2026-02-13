@@ -11,11 +11,12 @@
 
 ## Implemented Abstract Data Structures
 
-- [Doubly Linked List](/doubly_linked_list/): A linked list where each node has a pointer to both the next and previous node. It uses a sentinel node to simplify edge cases.
+- [Doubly Linked List](/doubly_linked_list/): A linked list where each node has a pointer to both the next and previous node. Using sentinels nodes.
 - [Dynamically Sized Array](/dynamic_array/): An array that resizes itself when capacity is reached. The growth factor is 2 (capacity doubles when resizing).
 - [Stack](/stack/): A last-in-first-out (LIFO) data structure implemented using a dynamically sized array.
+- [Deque](/deque/): A double-ended queue implemented using a circular buffer (track head).
 - [Heap](/heap/): A binary heap implemented using a dynamically sized array. It maintains the min heap property.
-- [Hash Table](/hash_table/): A hash table using separate chaining for collision resolution. It rehashes when the load factor exceeds 1.2.
+- [Hash Table](/hash_table/): Separate chaining with linked lists per bucket. It rehashes when the load factor exceeds 1.2.
 
 ## Folder structure
 
@@ -109,6 +110,23 @@ Let `n` be the current number of elements in the stack.
 | `top()`                |                       O(1) | Invalid if empty                 |
 | `size()`               |                       O(1) |                                  |
 
+### Deque
+
+Let `n` be the current number of elements in the deque.
+
+| Operation              |            Time Complexity | Exceptional cases        |
+| ---------------------- | -------------------------: | ------------------------ |
+| Default construction   |                       O(1) |                          |
+| Copy construction      |                       O(n) |                          |
+| Assignment `operator=` |                       O(n) |                          |
+| `push_front()`         | Amortized O(1), worst O(n) | Worst case when resizing |
+| `push_back()`          | Amortized O(1), worst O(n) | Worst case when resizing |
+| `pop_front()`          |                       O(1) | If empty, no effect      |
+| `pop_back()`           |                       O(1) | If empty, no effect      |
+| `front()`              |                       O(1) | Invalid if empty         |
+| `back()`               |                       O(1) | Invalid if empty         |
+| `size()`               |                       O(1) |                          |
+
 ### Heap
 
 Let `n` be the current number of elements in the heap.
@@ -120,7 +138,7 @@ Let `n` be the current number of elements in the heap.
 | Assignment `operator=` |                                      O(n) |                                                                                              |
 | `push()`               | Amortized O(log n), best O(1), worst O(n) | Worst when resizing. Heapify step is O(log n). Best case when inserted elem doesn’t move up. |
 | `pop()`                |                       O(log n), best O(1) | Invalid if empty. Best case if moved last element already satisfies heap property.           |
-| `peak()`               |                                      O(1) | Invalid if empty                                                                             |
+| `peek()`               |                                      O(1) | Invalid if empty                                                                             |
 | `size()`               |                                      O(1) |                                                                                              |
 
 ### HashTable

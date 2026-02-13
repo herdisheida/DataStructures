@@ -52,19 +52,11 @@ struct Stack {
     }
 
     // default constructor
-    Stack() : data(0), sz(0), cap(0) {
-        init(4);
-    }
-
+    Stack() : data(0), sz(0), cap(0) { init(4); }
     // auto destructor
-    ~Stack() {
-        destroy();
-    }
-
+    ~Stack() { destroy(); }
     // copy constructor
-    Stack(const Stack& other) : data(0), sz(0), cap(0){
-        copy_from(other);
-    }
+    Stack(const Stack& other) : data(0), sz(0), cap(0){ copy_from(other); }
     
     // assignment (operator=)
     Stack& operator=(const Stack& other) {

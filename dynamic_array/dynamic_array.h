@@ -56,19 +56,11 @@ struct DynamicArray {
     }
 
     // default constructor
-    DynamicArray() : data(0), sz(0), cap(0) {
-        init(4);
-    }
-
+    DynamicArray() : data(0), sz(0), cap(0) { init(4); }
     // auto destructor
-    ~DynamicArray() {
-        destroy();
-    }
-
+    ~DynamicArray() { destroy(); }
     // copy constructor (deep copy)
-    DynamicArray(const DynamicArray& other) : data(0), sz(0), cap(0) {
-        copy_from(other);
-    }
+    DynamicArray(const DynamicArray& other) : data(0), sz(0), cap(0) { copy_from(other); }
     
     // assignment (operator=) (deep copy)
     DynamicArray& operator=(const DynamicArray& other) {

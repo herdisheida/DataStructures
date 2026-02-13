@@ -92,19 +92,11 @@ struct Heap {
     }
 
     // default constructor
-    Heap() : data(0), sz(0), cap(0) {
-        init(4);
-    }
-
+    Heap() : data(0), sz(0), cap(0) { init(4); }
     // copy constructor
-    Heap(const Heap& other) : data(0), sz(0), cap(0) {
-        copy_from(other);
-    }
-
+    Heap(const Heap& other) : data(0), sz(0), cap(0) { copy_from(other); }
     // auto destructor
-    ~Heap() {
-        destroy();
-    }
+    ~Heap() { destroy(); }
 
     // assignment (operator=)
     Heap& operator=(const Heap& other) {

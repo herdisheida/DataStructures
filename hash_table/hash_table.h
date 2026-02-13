@@ -109,6 +109,29 @@ struct HashTable {
         }
     }
 
+    // re-hash to new bucket count
+    void rehash(size_t new_bucket_count) {
+        Node** old_buckets = buckets; // keep copy of old key-value pairs
+        size_t old_bucket_count = bucket_count;
+
+        // new empty hash table
+        buckets = 0;
+        init(new_bucket_count);  // initalizes bucket_count, buckets and sz
+
+        // re-hash items to new table and delete old nodes
+        for (size_t i = 0; i < old_bucket_count; i++) {
+            Node* n = old_buckets[i];
+            while (n) {                
+                _raw_insert(n -> key, n -> value);
+
+                Node* nxt = n -> next;
+                delete n;  // free old node
+                n = nxt;
+            }
+        }
+        delete[] old_buckets;
+    }
+
     // when num of items in HashTable reach 120% of the num of buckets
     void ensure_capacity() {
         if (sz * 10 >= bucket_count * 12) {
@@ -117,19 +140,11 @@ struct HashTable {
     }
 
     // default constructor
-    HashTable() : buckets(0), bucket_count(0), sz(0) {
-        init(8);
-    }
-
+    HashTable() : buckets(0), bucket_count(0), sz(0) { init(8); }
     // copy constructor
-    HashTable(const HashTable& other) : buckets(0), bucket_count(0), sz(0) {
-        copy_from(other);
-    }
-
+    HashTable(const HashTable& other) : buckets(0), bucket_count(0), sz(0) { copy_from(other); }
     // auto destructor
-    ~HashTable() {
-        destroy();
-    }
+    ~HashTable() { destroy(); }
 
     // assignment (operator=)
     HashTable& operator=(const HashTable& other) {
@@ -192,29 +207,6 @@ struct HashTable {
         return buckets[idx] -> value;
     }
 
-
-    // re-hash to new bucket count
-    void rehash(size_t new_bucket_count) {
-        Node** old_buckets = buckets; // keep copy of old key-value pairs
-        size_t old_bucket_count = bucket_count;
-
-        // new empty hash table
-        buckets = 0;
-        init(new_bucket_count);  // initalizes bucket_count, buckets and sz
-
-        // re-hash items to new table and delete old nodes
-        for (size_t i = 0; i < old_bucket_count; i++) {
-            Node* n = old_buckets[i];
-            while (n) {                
-                _raw_insert(n -> key, n -> value);
-
-                Node* nxt = n -> next;
-                delete n;  // free old node
-                n = nxt;
-            }
-        }
-        delete[] old_buckets;
-    }
 
     // provide the size of the hash table
     size_t size() const {

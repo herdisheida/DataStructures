@@ -75,20 +75,39 @@ struct Deque {
         return *this;
     }
 
-    // insert an element on top of the Deque.
-    void push(const T& value) {
+    // insert an element to the front of the deque
+    void push_front(const T& value) {
+        // TODO þetta er old
         if (sz == cap) reserve(cap * 2);
         data[sz] = value;
         sz++;
     }
 
-    // remove the top element off of the Deque.
-    void pop() {
+    // insert an element to the back of the deque
+    void push_back(const T& value) {
+        if (sz == cap) reserve(cap * 2);
+        data[sz] = value;
+        sz++;
+    }
+
+    // remove the front element off of the deque
+    void pop_front() {
+        // TODO þetta er old
         if (sz > 0) sz--;
     }
 
-    // provide access to the top element of the Deque.
-    T& top() const {
+    // remove the back element off of the deque
+    void pop_back() {
+        if (sz > 0) sz--;
+    }
+
+    // provide access to the front element of the deque
+    T& front() const {
+        return data[0];
+    }
+
+    // provide access to the back element of the deque
+    T& back() const {
         return data[sz - 1];
     }
 

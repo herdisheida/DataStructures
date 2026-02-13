@@ -26,63 +26,39 @@ int main() {
         char op;
         cin >> op; // read operation character
 
-        if (op == '+') {
-            // push front or back
-            char dir;
-            cin >> dir; // read direction character
-
-            if (dir == 'f') {
-                int value;
-                cin >> value;
-                // push front
-                deques[instance].push_front(value);
-            }
-            else if (dir == 'b') {
-                int value;
-                cin >> value;
-                // push back
-                deques[instance].push_back(value);
-            }
-
-
-        } else if (op == '-') {
-            // pop front or back
-            char dir;
-            cin >> dir; // read direction character
-
-            if (dir == 'f') {
-                // pop front
-                deques[instance].pop_front();
-            }
-            else if (dir == 'b') {
-                // pop back
-                deques[instance].pop_back();
-            }
-        }
-
         if (op == 'a') {
             int other;
             cin >> other;
-            other--; // change to 0-based index
-            // assignment
+            other--;
             deques[instance] = deques[other];
         }
-        else if (op == 'f') {
+        else if (op == '+') {
+            char dir; // front or back
             int value;
-            cin >> value;
-            // output front
+            cin >> dir >> value;
+            if (dir == 'f') deques[instance].push_front(value);
+            else if (dir == 'b') deques[instance].push_back(value);
+            else assert(false);
+        }
+        else if (op == '-') {
+            char dir; // front or back
+            cin >> dir;
+            if (dir == 'f') deques[instance].pop_front();
+            else if (dir == 'b') deques[instance].pop_back();
+            else assert(false);
+        }
+        else if (op == 'f') {
             cout << deques[instance].front() << endl;
         }
         else if (op == 'b') {
-            // output back
             cout << deques[instance].back() << endl;
         }
         else if (op == 's') {
-            // size
             cout << deques[instance].size() << endl;
         }
         else {
             assert(false);
         }
     }
+    return 0;
 }

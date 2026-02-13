@@ -99,8 +99,11 @@ struct Deque {
 
     // remove the front element off of the deque
     void pop_front() {
-        // TODO þetta er old
-        if (sz > 0) sz--;
+        if (sz == 0) return;
+        for (size_t i = 1; i < sz; i++) {
+            data[i - 1] = data[i];
+        }
+        sz--;
     }
 
     // remove the back element off of the deque
@@ -124,8 +127,6 @@ struct Deque {
     }
 
 };
-
-
 
 #endif
 

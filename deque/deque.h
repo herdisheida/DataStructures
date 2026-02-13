@@ -11,6 +11,8 @@ struct Deque {
     T* data;
     size_t sz;
     size_t cap;
+
+    // use circular buffer
     size_t head; // index of first elem
 
 
@@ -63,11 +65,11 @@ struct Deque {
     }
 
     // default constructor
-    Deque() : data(0), sz(0), cap(0) { init(4); }
+    Deque() : data(0), sz(0), cap(0), head(0) { init(4); }
     // auto destructor
     ~Deque() { destroy(); }
     // copy constructor
-    Deque(const Deque& other) : data(0), sz(0), cap(0){ copy_from(other); }
+    Deque(const Deque& other) : data(0), sz(0), cap(0), head(0) { copy_from(other); }
     
     // assignment (operator=)
     Deque& operator=(const Deque& other) {
@@ -107,9 +109,9 @@ struct Deque {
     }
 
     // provide access to the front element of the deque
-    const T& front() const { return data[head]; }
+    T& front() { return data[head]; }
     // provide access to the back element of the deque
-    const T& back() const { return data[idx(sz - 1)]; }
+    T& back() { return data[idx(sz - 1)]; }
 
     // provide the size of the Deque
     size_t size() const {

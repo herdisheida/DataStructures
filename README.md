@@ -13,7 +13,6 @@
 
 - [Doubly Linked List](/doubly_linked_list/): A linked list where each node has a pointer to both the next and previous node. Using sentinels nodes.
 - [Dynamically Sized Array](/dynamic_array/): An array that resizes itself when capacity is reached. The growth factor is 2 (capacity doubles when resizing).
-- [Stack](/stack/): A last-in-first-out (LIFO) data structure implemented using a dynamically sized array.
 - [Deque](/deque/): A double-ended queue implemented using a circular buffer (track head).
 - [Heap](/heap/): A binary heap implemented using a dynamically sized array. It maintains the min heap property.
 - [Hash Table](/hash_table/): Separate chaining with linked lists per bucket. It rehashes when the load factor exceeds 1.2.
@@ -95,20 +94,6 @@ Let `n` be the current number of elements in the array.
 | `resize(new_size)`          |                       O(n) | If new_size < capacity && new_size < size, no effect O(1)                    |
 | `reserve(new_cap)`          |                       O(n) | If new_cap ≤ current capacity, no effect                                     |
 | `print()`                   |                       O(n) | -                                                                            |
-
-### Stack
-
-Let `n` be the current number of elements in the stack.
-
-| Operation              |            Time Complexity | Exceptional cases                |
-| ---------------------- | -------------------------: | -------------------------------- |
-| Default construction   |                       O(1) |                                  |
-| Copy construction      |                       O(n) |                                  |
-| Assignment `operator=` |                       O(n) |                                  |
-| `push()`               | Amortized O(1), worst O(n) | Worst case when resizing         |
-| `pop()`                |                       O(1) | If the array is empty, no effect |
-| `top()`                |                       O(1) | Invalid if empty                 |
-| `size()`               |                       O(1) |                                  |
 
 ### Deque
 

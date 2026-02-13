@@ -43,9 +43,8 @@ int main() {
                 // push back
                 deques[instance].push_back(value);
             }
-            else {
-                assert(false);
-            }
+
+
         } else if (op == '-') {
             // pop front or back
             char dir;
@@ -58,9 +57,6 @@ int main() {
             else if (dir == 'b') {
                 // pop back
                 deques[instance].pop_back();
-            }
-            else {
-                assert(false);
             }
         }
 

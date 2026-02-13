@@ -15,7 +15,7 @@ struct Deque {
     // initialize an empty instance
     void init(size_t initial_cap) {
         sz = 0;
-        cap = (initial_cap <= 0 ? 1 : initial_cap);
+        cap = (initial_cap == 0 ? 1 : initial_cap);
         data = new T[cap];
     }
 
@@ -112,14 +112,10 @@ struct Deque {
     }
 
     // provide access to the front element of the deque
-    T& front() const {
-        return data[0];
-    }
+    T& front() const { return data[0]; }
 
     // provide access to the back element of the deque
-    T& back() const {
-        return data[sz - 1];
-    }
+    T& back() const { return data[sz - 1]; }
 
     // provide the size of the Deque
     size_t size() const {

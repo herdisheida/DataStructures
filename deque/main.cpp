@@ -1,5 +1,6 @@
 #include <cassert>
 #include <iostream>
+#include <ostream>
 #include "deque.h"
 
 using std::cout;
@@ -25,6 +26,44 @@ int main() {
         char op;
         cin >> op; // read operation character
 
+        if (op == '+') {
+            // push front or back
+            char dir;
+            cin >> dir; // read direction character
+
+            if (dir == 'f') {
+                int value;
+                cin >> value;
+                // push front
+                deques[instance].push_front(value);
+            }
+            else if (dir == 'b') {
+                int value;
+                cin >> value;
+                // push back
+                deques[instance].push_back(value);
+            }
+            else {
+                assert(false);
+            }
+        } else if (op == '-') {
+            // pop front or back
+            char dir;
+            cin >> dir; // read direction character
+
+            if (dir == 'f') {
+                // pop front
+                deques[instance].pop_front();
+            }
+            else if (dir == 'b') {
+                // pop back
+                deques[instance].pop_back();
+            }
+            else {
+                assert(false);
+            }
+        }
+
         if (op == 'a') {
             int other;
             cin >> other;
@@ -32,19 +71,15 @@ int main() {
             // assignment
             deques[instance] = deques[other];
         }
-        else if (op == '+') {
+        else if (op == 'f') {
             int value;
             cin >> value;
-            // push
-            deques[instance].push(value);
+            // output front
+            cout << deques[instance].front() << endl;
         }
-        else if (op == '-') {
-            // pop
-            deques[instance].pop();
-        }
-        else if (op == 't') {
-            // top
-            cout << deques[instance].top() << endl;
+        else if (op == 'b') {
+            // output back
+            cout << deques[instance].back() << endl;
         }
         else if (op == 's') {
             // size

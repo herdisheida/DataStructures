@@ -6,8 +6,6 @@ BUILD_NAME := Doubly Linked List
 SRCS := main.cpp
 OBJS := $(SRCS:.cpp=.o)  # convert .cpp file names to .o file names
 
-INPUTS := input_tests/input1.txt input_tests/input2.txt
-
 all: $(TARGET) info
 
 info:
@@ -28,4 +26,4 @@ clean:
 	rm -f $(OBJS) $(TARGET)
 
 # mark commands
-.PHONY: all clean info
+.PHONY: all clean info test

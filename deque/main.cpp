@@ -1,6 +1,6 @@
 #include <cassert>
 #include <iostream>
-#include "stack.h"
+#include "deque.h"
 
 using std::cout;
 using std::cin;
@@ -8,9 +8,9 @@ using std::endl;
 using std::ws;
 
 
-typedef Stack<int> your_stack_type;
+typedef Deque<int> your_deque_type;
 
-your_stack_type stacks[1000];
+your_deque_type deques[1000];
 
 int main() {
     int q;
@@ -30,25 +30,25 @@ int main() {
             cin >> other;
             other--; // change to 0-based index
             // assignment
-            stacks[instance] = stacks[other];
+            deques[instance] = deques[other];
         }
         else if (op == '+') {
             int value;
             cin >> value;
             // push
-            stacks[instance].push(value);
+            deques[instance].push(value);
         }
         else if (op == '-') {
             // pop
-            stacks[instance].pop();
+            deques[instance].pop();
         }
         else if (op == 't') {
             // top
-            cout << stacks[instance].top() << endl;
+            cout << deques[instance].top() << endl;
         }
         else if (op == 's') {
             // size
-            cout << stacks[instance].size() << endl;
+            cout << deques[instance].size() << endl;
         }
         else {
             assert(false);

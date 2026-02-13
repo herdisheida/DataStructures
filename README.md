@@ -23,7 +23,7 @@ Each data structure is located in its own folder and each folder contains:
 
 - a Makefile
 - source files (`.cpp` and `.h` files)
-- assignment information (`.pdf` files)
+- folder `tests` with test cases for the data structure
 
 ## Compile and run program
 
@@ -41,9 +41,9 @@ make
 
 3. Run:
 
-```bash
-./program
-```
+|         | Enter Input Manually | Use Test Files   |
+| ------- | -------------------- | ---------------- |
+| Command | `./program`.         | `../run-test.sh` |
 
 #### Clean
 

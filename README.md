@@ -27,30 +27,19 @@ Each data structure is located in its own folder and each folder contains:
 
 ## Compile and run program
 
-#### Compile
-
-- You have two options:
-
-| What you want to build    | Where you are                       | Command |
-| ------------------------- | ----------------------------------- | ------- |
-| Build all data structures | Project _root_ folder               | `make`  |
-| Build one data structure  | Inside _that_ data structure folder | `make`  |
-
-#### Run
-
 1. Go into the folder you want to run:
 
 ```bash
 cd <folder>
 ```
 
-2. Build (if you haven't already):
+2. Compile:
 
 ```bash
 make
 ```
 
-3. Run
+3. Run:
 
 ```bash
 ./program
@@ -58,7 +47,7 @@ make
 
 #### Clean
 
-To remove compiled object files and the executable:
+Remove .o files and the executable:
 
 ```bash
 make clean

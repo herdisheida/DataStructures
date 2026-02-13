@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if [ ! -f "./program" ]; then
-    echo "No program found in this folder."
-    echo "Run make first."
+    echo "No program found in this folder. Run make first."
     exit 1
 fi
 
